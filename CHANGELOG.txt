@@ -1,6 +1,24 @@
 CHANGELOG — Neel & Hema Wedding Website
 ========================================
 
+[2026-09-16] — Section Palette & Timeline Refinement
+-----------------------------------------------------
+
+DESIGN TOKENS & SHARED BACKGROUNDS
+  - Deepened the primary dark-purple token and introduced --section-temple-background for a reusable ivory temple-pattern treatment
+  - Applied the shared temple background to all non-hero content sections, plus the Venue, Events timeline, and Families sections
+  - Reduced the temple pattern opacity for a softer background texture
+  - Updated shared section labels, small icons, and scrolled-navigation borders/shadows to use the purple palette
+
+WEDDING EVENTS SECTION
+  - Refined the timeline header, eyebrow pill, subtitle, tab bar, day labels, and date badges with the purple/cream visual system
+  - Added a compatible fallback color for the timeline tab bar and clarified hover/active tab states
+  - Restyled day group and date pills with purple-tinted surfaces, borders, typography, and shadows
+
+OUR FAMILIES SECTION
+  - Updated the section heading, eyebrow, ornament, quote, family columns, hometown details, and lineage/card surfaces to the purple palette
+  - Added purple borders, tinted card backgrounds, and coordinated shadows for family and lineage cards
+
 [2026-09-11] — Purple Palette & Family Photo Update
 ---------------------------------------------------
 
