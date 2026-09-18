@@ -377,9 +377,91 @@ function initTimelineTabs() {
   });
 }
 
+/* =============================================
+   7. CAPTURED MOMENTS CAROUSEL
+============================================== */
+function initMomentsCarousel() {
+  const viewport = $('#moments-viewport');
+  const previous = $('.moments-prev');
+  const next = $('.moments-next');
+  const cards = $$('.moment-card', viewport);
+  const dots = $$('.moments-dots button');
+
+  if (!viewport || !previous || !next || !cards.length || !dots.length) return;
+
+  function cardStep() {
+    return cards.length > 1
+      ? cards[1].offsetLeft - cards[0].offsetLeft
+      : cards[0].getBoundingClientRect().width;
+  }
+
+  function setActiveDot() {
+    const activeIndex = Math.max(0, Math.min(cards.length - 1, Math.round(viewport.scrollLeft / cardStep())));
+    dots.forEach((dot, index) => {
+      const active = index === activeIndex;
+      dot.classList.toggle('active', active);
+      dot.setAttribute('aria-selected', String(active));
+    });
+  }
+
+  function currentIndex() {
+    return Math.max(0, Math.min(cards.length - 1, Math.round(viewport.scrollLeft / cardStep())));
+  }
+
+  function showCard(index) {
+    // Keep automatic carousel movement inside its horizontal viewport.
+    // scrollIntoView can also move the whole page vertically when a card is
+    // partially off-screen, which pulled visitors back to this section.
+    const cardLeft = cards[index].getBoundingClientRect().left;
+    const viewportLeft = viewport.getBoundingClientRect().left;
+    viewport.scrollTo({
+      left: viewport.scrollLeft + cardLeft - viewportLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  function showNextCard() {
+    showCard((currentIndex() + 1) % cards.length);
+  }
+
+  let autoScrollTimer;
+
+  function startAutoScroll() {
+    window.clearInterval(autoScrollTimer);
+    autoScrollTimer = window.setInterval(showNextCard, 5000);
+  }
+
+  function pauseAutoScroll() {
+    window.clearInterval(autoScrollTimer);
+  }
+
+  previous.addEventListener('click', () => {
+    showCard((currentIndex() - 1 + cards.length) % cards.length);
+    startAutoScroll();
+  });
+  next.addEventListener('click', () => {
+    showNextCard();
+    startAutoScroll();
+  });
+  viewport.addEventListener('scroll', setActiveDot, { passive: true });
+  viewport.addEventListener('mouseenter', pauseAutoScroll);
+  viewport.addEventListener('mouseleave', startAutoScroll);
+  viewport.addEventListener('focusin', pauseAutoScroll);
+  viewport.addEventListener('focusout', startAutoScroll);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showCard(index);
+      startAutoScroll();
+    });
+  });
+
+  startAutoScroll();
+}
+
 
 /* =============================================
-   7. VENUE — COPY ADDRESS
+   8. VENUE — COPY ADDRESS
 ============================================== */
 function initVenueCopyAddress() {
   const btn = $('#copy-address-btn');
@@ -414,5 +496,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initGallery();
   initTimelineTabs();
+  initMomentsCarousel();
   initVenueCopyAddress();
 });

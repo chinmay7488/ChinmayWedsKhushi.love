@@ -1,4 +1,26 @@
-CHANGELOG — Neel & Hema Wedding Website
+[2026-09-18] — Wedding Content, Layout & Interaction Updates
+--------------------------------------------------------------
+
+SITE CONTENT & STRUCTURE
+  - Replaced the earlier story-led invitation content with a Chinmay and Khushi wedding invitation layout
+  - Added the Meet the Couple section with individual groom and bride profiles, family details, residences, and introductory messages
+  - Updated the hero, itinerary, family, footer, and browser-title content for the Chinmay and Khushi celebration
+  - Refined family information, including parent name order, residence details, hometown labels, and bride-side sibling cards
+  - Reworked the venue header and supporting presentation details to match the current invitation design
+
+EVENTS & MEDIA
+  - Updated the two-day celebration schedule, event labels, ceremony descriptions, dates, times, imagery, and event-card presentation
+  - Added a Captured Moments carousel structure with ceremony imagery, navigation controls, accessible labels, and position indicators
+  - Added carousel behavior: automatic advance, arrow and indicator controls, hover/focus pause, and viewport-only scrolling
+
+DESIGN & RESPONSIVE LAYOUT
+  - Consolidated the page around the purple, ivory, and gold wedding visual system
+  - Refined the hero, navigation, countdown, couple profiles, event timeline, family cards, and venue layout
+  - Added viewport-aware section sizing using modern dynamic viewport height where supported
+  - Improved tablet and mobile layouts for navigation, event cards, couple profiles, family columns, venue map, and compact screens
+  - Updated shared focus styling and visual treatments for interactive components
+
+CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
 [2026-09-16] — Section Palette & Timeline Refinement
