@@ -18,8 +18,60 @@
 
 
 /* -----------------------------------------------
-   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   1. CUSTOM FONTS & DESIGN TOKENS
 ----------------------------------------------- */
+/* Local font files keep the site independent from an English web-font CDN. */
+@font-face {
+  font-family: 'Josefin Slab Regular';
+  src: url('../assets/fonts/English/Josefin_Slab/static/JosefinSlab-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Josefin Slab Italic';
+  src: url('../assets/fonts/English/Josefin_Slab/static/JosefinSlab-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Anoretha Sweet Local';
+  src: url('../assets/fonts/English/anoretha_sweet/Anoretha Sweet Demo.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Semi Italic Local';
+  src: url('../assets/fonts/English/cormorant.semi-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aakriti Italic';
+  src: url('../assets/fonts/Hindi/aakriti_italic.ttf') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0900-097F;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aakriti Regular';
+  src: url('../assets/fonts/Hindi/aakriti_regular.ttf') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0900-097F;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Wedding palette */
   --color-cream:         #FFFDD0;
@@ -28,19 +80,24 @@
   --color-purple-medium: #a786db;
   --color-purple-light:  #b59ce0;
   --color-purple-lightest:  #C2B3E5;
-
   --color-gold:           #c9a96e;
   --section-temple-background: #fffff0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23c2b3e5' fill-opacity='0.09'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
   /* --image-bg-sections: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23c2b3e5' fill-opacity='0.24'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
 
-  /* Fonts */
-  --font-heading:         'Cormorant Garamond', Georgia, serif;
-  --font-body:            'Lato', system-ui, sans-serif;
+  /* Fonts: change these values to update typography site-wide. */
+  --font-heading:               'Josefin Slab Regular', Georgia, serif;
+  --font-heading-weight:         800;
+  --font-subheading:            'Josefin Slab Italic', Georgia, serif;
+  --font-Subheading-weight:     600;
+  --font-body:                  'Josefin Slab Regular', Georgia, serif;
+  --font-body-weight:           400;
+  --font-Main:                  'Anoretha Sweet Local', cursive;
+        
 
   /* Spacing scale */
   --space-xs:   0.5rem;
-  --space-sm:   1rem;
+  --space-sm:   1rem; 
   --space-md:   2rem;
   --space-lg:   4rem;
   --space-xl:   6rem;
@@ -89,7 +146,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: var(--font-body-weight);
   line-height: 1.7;
   overflow-x: hidden;   /* belt-and-braces: also block on body */
 }
@@ -116,6 +173,98 @@ button {
   background: none;
 }
 
+html[lang="hi"] {
+  --font-heading-weight:         800;
+  --font-Subheading-weight:     600;
+  --font-body-weight:           400;
+  --font-heading:               'Ranga', cursive;
+  --font-subheading:            'Gotu', sans-serif;
+  --font-body:                  'Gotu', sans-serif;
+}
+
+
+body.language-modal-open { overflow: hidden; }
+
+
+.language-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(30, 13, 13, 0.82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.language-modal[hidden] { display: none; }
+
+.language-modal-card {
+  width: min(100%, 560px);
+  padding: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+  color: var(--color-purple-dark);
+  background: var(--color-ivory);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+
+.language-modal-ornament {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--color-gold);
+  font-size: 1.5rem;
+}
+
+.language-modal-card h1 { font-size: clamp(2rem, 6vw, 3rem); }
+
+.language-modal-card p {
+  margin-top: 0.75rem;
+  color: #59465e;
+  line-height: 1.7;
+}
+
+.language-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.language-option, .language-switcher {
+  border: 1px solid var(--color-purple-medium);
+  border-radius: var(--radius-md);
+  color: var(--color-purple-dark);
+  background: #fff;
+  transition: transform var(--transition), background-color var(--transition), color var(--transition);
+}
+
+.language-option { padding: 1rem; }
+.language-option span { display: block; font-size: 1.3rem; font-weight: 700; }
+.language-option small { display: block; margin-top: 0.25rem; font-size: 0.78rem; }
+.language-option:hover, .language-option:focus-visible {
+  color: var(--color-ivory);
+  background: var(--color-purple-dark);
+  transform: translateY(-2px);
+}
+
+.language-switcher {
+  padding: 0.36rem 0.6rem;
+  color: var(--color-ivory);
+  background: rgba(255, 253, 208, 0.13);
+  border-color: rgba(255, 253, 208, 0.45);
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.language-switcher:hover, .language-switcher:focus-visible {
+  color: var(--color-purple-dark);
+  background: var(--color-cream);
+}
+
 /* Focus-visible ring for keyboard accessibility */
 :focus-visible {
   outline: 2px solid var(--color-gold);
@@ -129,7 +278,7 @@ button {
 ----------------------------------------------- */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: var(--font-heading-weight);
   line-height: 1.2;
   color: var(--color-purple-dark);
 }
@@ -150,6 +299,14 @@ body > section {
   min-height: var(--section-min-height);
 }
 
+.title{
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+}
+.sub-title{
+  font-family: var(--font-subheading);
+  font-weight: var(--font-Subheading-weight);
+}
 
 /* -----------------------------------------------
    5. NAVIGATION
@@ -190,7 +347,6 @@ body > section {
 }
 
 .nav-muhurat-label {
-  font-family: var(--font-body);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -223,9 +379,7 @@ body > section {
 }
 
 .nav-cd-num {
-  font-family: var(--font-heading);
   font-size: 1rem;
-  font-weight: 400;
   color: var(--color-ivory);
   line-height: 1.1;
   transition: color 0.35s ease;
@@ -242,7 +396,6 @@ body > section {
 }
 
 .nav-cd-colon {
-  font-family: var(--font-heading);
   font-size: 0.9rem;
   color: rgba(201, 169, 110, 0.5);
   line-height: 1;
@@ -422,7 +575,6 @@ body > section {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -444,7 +596,6 @@ body > section {
 
 /* Blessing italic quote */
 .hero-blessing {
-  font-family: var(--font-heading);
   font-style: italic;
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--color-gold);
@@ -456,9 +607,7 @@ body > section {
 
 /* Main heading */
 .hero-names {
-  font-family: var(--font-heading);
   font-size: clamp(2rem, 7vw, 5.5rem);
-  font-weight: 400;
   color: var(--color-ivory);
   line-height: 1.1;
   margin-bottom: 1rem;
@@ -468,9 +617,10 @@ body > section {
 
 .hero-names-couple {
   display: block;
-  font-style: italic;
+  font-family: var(--font-Main);
   color: var(--color-purple-dark);
   font-size: 1.05em;
+  padding: 20px 0;
 }
 
 /* Hashtag pill below the couple name */
@@ -478,7 +628,6 @@ body > section {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -500,9 +649,7 @@ body > section {
 
 /* Subtitle */
 .hero-subtitle {
-  font-family: var(--font-body);
   font-size: clamp(0.7rem, 1.5vw, 0.85rem);
-  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-cream);
@@ -556,7 +703,6 @@ body > section {
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -628,7 +774,6 @@ body > section {
 }
 
 .hcb-title {
-  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -658,9 +803,8 @@ body > section {
 }
 
 .hcb-num {
-  font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 300;
+  font-weight: var(--font-heading-weight);
   color: var(--color-ivory);
   line-height: 1;
 }
@@ -712,7 +856,7 @@ body > section {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  color: var(--color-purple-dark);
+  color: var(--color-gold);
   background-color:color-mix(in srgb, var(--color-purple-lightest) 20%, transparent) ;
   border: 1px solid color-mix(in srgb, var(--color-purple-dark) 20%, transparent) ;
   border-radius: 20px;
@@ -742,6 +886,8 @@ body > section {
 .couple-intro {
   color: var(--color-purple-medium);
   font-size: 0.92rem;
+  font-family: var(--font-subheading);
+  font-weight: var(--font-Subheading-weight);
   line-height: 1.7;
 }
 
@@ -853,7 +999,6 @@ body > section {
   border: 1px solid color-mix(in srgb, var(--color-gold) 70%, var(--color-ivory));
   border-radius: 50%;
   color: var(--color-ivory);
-  font-family: var(--font-heading);
   font-size: 5rem;
   line-height: 1;
   text-shadow: 0 3px 12px color-mix(in srgb, var(--color-purple-dark) 55%, transparent);
@@ -945,7 +1090,6 @@ body > section {
 
 .moments-subtitle {
   color: var(--color-purple-medium);
-  font-family: var(--font-heading);
   font-size: clamp(1.05rem, 2vw, 1.35rem);
   font-style: italic;
 }
@@ -997,9 +1141,7 @@ body > section {
   padding: 0.3rem 0.75rem;
   background: var(--color-purple-dark);
   color: var(--color-ivory);
-  font-family: var(--font-heading);
   font-size: 0.72rem;
-  font-weight: 700;
   letter-spacing: 0.04em;
 }
 
@@ -1009,7 +1151,6 @@ body > section {
   gap: 0.5rem;
   padding: 0.85rem 1rem 0;
   color: var(--color-purple-medium);
-  font-family: var(--font-heading);
   font-size: 0.78rem;
   letter-spacing: 0.03em;
 }
@@ -1063,7 +1204,6 @@ body > section {
 }
 
 .footer-line {
-  font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -1098,12 +1238,11 @@ body > section {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-purple-dark);
+  color: var(--color-gold);
   background-color:color-mix(in srgb, var(--color-purple-lightest) 20%, transparent) ;
   border: 1px solid color-mix(in srgb, var(--color-purple-dark) 20%, transparent) ;
   border-radius: 20px;
@@ -1111,9 +1250,7 @@ body > section {
 }
 
 .venue-title {
-  font-family: var(--font-heading);
   font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 700;
   color: var(--color-purple-dark);
   line-height: 1.2;
 }
@@ -1121,6 +1258,8 @@ body > section {
 
 .venue-desc {
   font-size: 0.95rem;
+  font-family: var(--font-subheading);
+  font-weight: var(--font-Subheading-weight);
   color: var(--color-purple-medium);
   max-width: 520px;
   line-height: 1.8;
@@ -1170,9 +1309,7 @@ body > section {
 }
 
 .venue-name {
-  font-family: var(--font-heading);
   font-size: clamp(1.6rem, 2.5vw, 2rem);
-  font-weight: 600;
   color: var(--color-purple-dark);
   line-height: 1.2;
   margin: 0;
@@ -1285,7 +1422,6 @@ body > section {
   width: 100%;
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
-  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1409,12 +1545,11 @@ body > section {
 
 /* Small eyebrow line above the title */
 .timeline-eyebrow {
-  font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-purple-dark);
+  color: var(--color-gold);
   background-color:color-mix(in srgb, var(--color-purple-lightest) 20%, transparent) ;
   border: 1px solid color-mix(in srgb, var(--color-purple-dark) 20%, transparent) ;
   border-radius: 20px;
@@ -1430,22 +1565,21 @@ body > section {
 }
 
 .timeline-title {
-  font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
+  font-weight: var(--font-heading-weight);
   color: var(--color-purple-dark);                    /* very dark wine, matches reference */
   line-height: 1.15;
   margin: 0;
 }
 
 .timeline-subtitle {
-  font-family: var(--font-heading);
   font-size: 18px;
   color: var(--color-purple-light);
+  font-family: var(--font-subheading);
   max-width: 520px;
   line-height: 1.7;
   margin: 0;
-  font-weight: 600;
+  font-weight: var(--font-Subheading-weight);
 }
 
 /* ── Tab bar ── */
@@ -1468,7 +1602,6 @@ body > section {
 
 /* All tabs base style */
 .tab-btn {
-  font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -1580,24 +1713,24 @@ body > section {
 }
 
 .day-number {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--color-purple-dark);
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
 }
 
 .day-separator {
   color: var(--color-purple-dark);
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   opacity: 0.7;
 }
 
 .day-name {
-  font-family: var(--font-heading);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-weight: var(--font-Subheading-weight);
   color: var(--color-purple-dark);
   letter-spacing: 0.02em;
 }
@@ -1620,6 +1753,8 @@ body > section {
 .day-date i {
   color: var(--color-purple-dark);
   font-size: 0.8rem;
+  position: relative;
+  top:-2px;
 }
 
 /* ---- Individual card ---- */
@@ -1669,7 +1804,6 @@ body > section {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1694,9 +1828,7 @@ body > section {
 
 /* Event name — bold dark serif */
 .event-title {
-  font-family: var(--font-heading);
   font-size: 1.3rem;
-  font-weight: 700;
   color: var(--color-purple-dark);
   line-height: 1.25;
   margin: 0 0 8px;
@@ -1704,7 +1836,6 @@ body > section {
 
 /* Italic gold subtitle */
 .event-subtitle {
-  font-family: var(--font-heading);
   font-style: italic;
   font-size: 0.78rem;
   color: var(--color-purple-light);
@@ -1764,7 +1895,7 @@ body > section {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-purple-dark);
+  color: var(--color-gold);
   background-color:color-mix(in srgb, var(--color-purple-lightest) 20%, transparent) ;
   border: 1px solid color-mix(in srgb, var(--color-purple-dark) 20%, transparent) ;
   border-radius: 20px;
@@ -1774,9 +1905,7 @@ body > section {
 .fam-eye-star { font-size: 0.5rem; opacity: 0.8; }
 
 .families-title {
-  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 700;
   color: var(--color-purple-dark);
   line-height: 1.1;
   margin: 0;
@@ -1790,8 +1919,8 @@ body > section {
 }
 
 .families-quote {
-  font-family: var(--font-heading);
-  font-style: italic;
+  font-family: var(--font-subheading);
+  font-weight: var(--font-Subheading-weight);
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   color: var(--color-purple-medium);
   max-width: 640px;
@@ -1833,9 +1962,7 @@ body > section {
 
 /* Family name — large centered bold serif */
 .fam-family-name {
-  font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 700;
   color: var(--color-gold);
   margin: 0 0 0.5rem;
   line-height: 1.15;
@@ -1958,9 +2085,7 @@ body > section {
 
 /* Bold name */
 .fam-card-name {
-  font-family: var(--font-heading);
   font-size: clamp(1.55rem, 2.8vw, 34px);
-  font-weight: 700;
   color: var(--color-purple-dark);
   line-height: 1.25;
   margin: 0;
@@ -2072,9 +2197,7 @@ body > section {
 }
 
 .fam-lineage-spouse {
-  font-family: var(--font-heading);
   font-size: 0.95rem;
-  font-weight: 600;
   color: var(--color-purple-dark);
   line-height: 1.3;
   margin: 0;
@@ -2120,9 +2243,7 @@ body > section {
 }
 
 .fam-sibling-name {
-  font-family: var(--font-heading);
   font-size: 1rem;
-  font-weight: 600;
   color: var(--color-purple-dark);
   margin: 0;
   line-height: 1.3;
@@ -2140,6 +2261,8 @@ body > section {
   white-space: nowrap;
   align-self: flex-start;
   margin-top: 3px;
+  position: relative;
+  top: -6px;
 }
 
 .fam-sibling-detail {
@@ -2534,6 +2657,12 @@ body > section:not(#hero-section) {
     color: rgba(245, 237, 227, 0.85);
   }
 
+  .language-switcher {
+    align-self: stretch;
+    padding: 0.65rem 0.8rem;
+    text-align: left;
+  }
+
   /* Events */
   .event-card {
     flex: 0 0 260px;
@@ -2558,6 +2687,11 @@ body > section:not(#hero-section) {
     margin-inline: auto;
     gap: 1.5rem;
   }
+}
+
+@media (max-width: 480px) {
+  .language-modal-card { padding: 1.75rem 1.25rem; }
+  .language-options { grid-template-columns: 1fr; }
 }
 
 

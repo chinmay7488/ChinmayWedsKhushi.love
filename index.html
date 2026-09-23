@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Wedding celebration of Neel & Hema — Join us for our special day." />
+  <meta name="description" content="Wedding celebration of Chinmay & Khushi — Join us for our special day." />
   <title>Chinmay &amp; Khushi | Wedding</title>
 
-  <!-- Google Fonts: Cormorant Garamond (headings) + Lato (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap"
-    rel="stylesheet"
-  />
+ <!-- Import Gotu and Ranga from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Ranga:wght@600;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css" />
   <!-- Font Awesome for clock & calendar icons used in the timeline cards -->
@@ -27,6 +24,22 @@
 
 <body>
 
+  <div id="language-modal" class="language-modal" role="dialog" aria-modal="true" aria-labelledby="language-modal-title" aria-describedby="language-modal-description">
+    <div class="language-modal-card">
+      <span class="language-modal-ornament" aria-hidden="true">✦</span>
+      <h1 id="language-modal-title" data-i18n="modal.title">Choose your language</h1>
+      <p id="language-modal-description" data-i18n="modal.desc">Please select a language to continue.</p>
+      <div class="language-options">
+        <button class="language-option" type="button" data-language-choice="en" lang="en">
+          <span data-i18n="modal.btnEn">English</span><small data-i18n="modal.btnEnSub">Continue in English</small>
+        </button>
+        <button class="language-option" type="button" data-language-choice="hi" lang="hi">
+          <span data-i18n="modal.btnHi">हिंदी</span><small data-i18n="modal.btnHiSub">हिंदी में आगे बढ़ें</small>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- =============================================
        NAVIGATION
   ============================================== -->
@@ -35,31 +48,29 @@
 
       <!-- LEFT: Muhurat mini-countdown -->
       <div class="nav-left">
-        <p class="nav-muhurat-label">Auspicious Muhurat</p>
+        <p class="nav-muhurat-label" data-i18n="nav.muhuratLabel">Auspicious Muhurat</p>
         <div class="nav-countdown" id="nav-countdown" aria-live="polite">
           <div class="nav-cd-unit">
             <span class="nav-cd-num" id="nav-cd-days">--</span>
-            <span class="nav-cd-lbl">Days</span>
+            <span class="nav-cd-lbl" data-i18n="nav.cdDays">Days</span>
           </div>
           <span class="nav-cd-colon">:</span>
           <div class="nav-cd-unit">
             <span class="nav-cd-num" id="nav-cd-hrs">--</span>
-            <span class="nav-cd-lbl">Hrs</span>
+            <span class="nav-cd-lbl" data-i18n="nav.cdHrs">Hrs</span>
           </div>
           <span class="nav-cd-colon">:</span>
           <div class="nav-cd-unit">
             <span class="nav-cd-num" id="nav-cd-mins">--</span>
-            <span class="nav-cd-lbl">Min</span>
+            <span class="nav-cd-lbl" data-i18n="nav.cdMin">Min</span>
           </div>
           <span class="nav-cd-colon">:</span>
           <div class="nav-cd-unit">
             <span class="nav-cd-num" id="nav-cd-secs">--</span>
-            <span class="nav-cd-lbl">Sec</span>
+            <span class="nav-cd-lbl" data-i18n="nav.cdSec">Sec</span>
           </div>
         </div>
       </div>
-
-    
 
       <!-- Hamburger toggle (mobile) -->
       <button
@@ -76,14 +87,13 @@
       <!-- RIGHT: Nav links + RSVP -->
       <div class="nav-right">
         <ul id="nav-links" class="nav-links" role="list">
-          <!-- <li><a href="#story-section"    class="nav-link">Our Story</a></li> -->
-          <li><a href="#hero-section"    class="nav-link">Home</a></li>
-          <li><a href="#couple-section"    class="nav-link">About</a></li>
-          <li><a href="#events-section"  class="nav-link">Events</a></li>
-          <!-- <li><a href="#gallery-section"  class="nav-link">Gallery</a></li> -->
-          <li><a href="#families-section" class="nav-link">Families</a></li>
-          <li><a href="#venue-section"    class="nav-link">Venue</a></li>
+          <li><a href="#hero-section" class="nav-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="#couple-section" class="nav-link" data-i18n="nav.about">About</a></li>
+          <li><a href="#events-section" class="nav-link" data-i18n="nav.events">Events</a></li>
+          <li><a href="#families-section" class="nav-link" data-i18n="nav.families">Families</a></li>
+          <li><a href="#venue-section" class="nav-link" data-i18n="nav.venue">Venue</a></li>
         </ul>
+        <button id="language-switcher" class="language-switcher" type="button" aria-label="Change website language" data-i18n="nav.langBtn">हिंदी</button>
       </div>
 
     </nav>
@@ -96,7 +106,6 @@
     ============================================== -->
     <section id="hero-section" aria-labelledby="main-heading">
 
-      <!-- Video background (muted, looping, autoplays) -->
       <video
         class="hero-video"
         autoplay
@@ -105,45 +114,31 @@
         playsinline
         aria-hidden="true"
       >
-        <!--
-          Drop your video file into assets/images/ and update the src below.
-          Recommended: MP4 H.264, ~10–30 seconds, 1920×1080.
-          Example: <source src="assets/images/hero-bg.mp4" type="video/mp4" />
-        -->
         <source src="./assets/videos/invitation.mp4" type="video/mp4" />
       </video>
 
-      <!-- Dark overlay on top of video -->
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <!-- ── Main content (over video) ── -->
       <div class="hero-content">
 
-        <!-- Eyebrow pill -->
-        <p class="hero-eyebrow">
-          <span class="hero-eyebrow-star">★</span>
-          Janak Vatika, Firozabad &nbsp;·&nbsp; Uttar Pradesh
-          <span class="hero-eyebrow-star">★</span>
-        </p>
-
         <!-- Blessing line -->
-        <p class="hero-blessing">"Om Shree Mahaviray Namah"</p>
+        <p class="hero-blessing" data-i18n="hero.blessing">|| ॐ श्री महावीराय नमः || जैनम जयति शासनम् ||</p>
 
         <!-- Main title -->
         <h1 id="hero-names" class="hero-names">
-          The Wedding of
-          <em class="hero-names-couple">Chinmay &amp; Khushi</em>
+          <span data-i18n="hero.namesPrefix">The Wedding of</span>
+          <em class="hero-names-couple" data-i18n="hero.namesCouple">Chinmay &amp; Khushi</em>
         </h1>
 
         <!-- Hashtag pill -->
         <p class="hero-hashtag">
           <span class="hero-hashtag-star">✦</span>
-          #ChinmayKiKhushi
+          <span data-i18n="hero.hashtag">#ChinmayKiKhushi</span>
           <span class="hero-hashtag-star">✦</span>
         </p>
 
         <!-- Subtitle -->
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
           Shubh Vivaha Mahotsav &nbsp;·&nbsp; Celebrating sacred vows with family &amp; friends
         </p>
 
@@ -151,17 +146,17 @@
         <div class="hero-meta" aria-label="Wedding details">
           <span class="hero-meta-item">
             <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
-            December 04-05, 2026
+            <span data-i18n="hero.metaDate">December 04-05, 2026</span>
           </span>
           <span class="hero-meta-dot" aria-hidden="true">◆</span>
           <span class="hero-meta-item">
             <i class="fa-regular fa-building" aria-hidden="true"></i>
-            Janak Vatika, Marriage Home Humaunpur
+            <span data-i18n="hero.metaVenue">Janak Vatika, Marriage Home Humaunpur</span>
           </span>
           <span class="hero-meta-dot" aria-hidden="true">◆</span>
           <span class="hero-meta-item">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            Firozabad, Uttar Pradesh
+            <span data-i18n="hero.metaLocation">Firozabad, Uttar Pradesh</span>
           </span>
         </div>
 
@@ -169,53 +164,51 @@
         <div class="hero-ctas">
           <a href="#events-section" class="hero-btn hero-btn-dark">
             <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
-            Explore Itinerary
+            <span data-i18n="hero.btnExplore">Explore Itinerary</span>
           </a>
           <a href="#venue-section" class="hero-btn hero-btn-gold">
             <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-            Venue Guide
+            <span data-i18n="hero.btnVenue">Venue Guide</span>
           </a>
         </div>
 
-      </div><!-- /.hero-content -->
+      </div>
 
-      <!-- ── Bottom countdown bar (static dark, no video behind) ── -->
+      <!-- Bottom countdown bar -->
       <div class="hero-countdown-bar" aria-label="Auspicious Muhurat Countdown">
         <div class="hero-countdown-bar-inner">
 
           <div class="hcb-left">
-            <p class="hcb-title">Auspicious Muhurat Countdown</p>
-            <p class="hcb-subtitle">Sacred Hastamelap Ceremony</p>
+            <p class="hcb-title" data-i18n="hero.hcbTitle">Auspicious Muhurat Countdown</p>
+            <p class="hcb-subtitle" data-i18n="hero.hcbSubtitle">Sacred Hastamelap Ceremony</p>
           </div>
 
           <div class="hcb-timer" id="hero-countdown" aria-live="polite">
             <div class="hcb-unit">
               <span class="hcb-num" id="cd-days">--</span>
-              <span class="hcb-lbl">Days</span>
+              <span class="hcb-lbl" data-i18n="hero.hcbDays">Days</span>
             </div>
             <span class="hcb-sep" aria-hidden="true"></span>
             <div class="hcb-unit">
               <span class="hcb-num" id="cd-hours">--</span>
-              <span class="hcb-lbl">Hours</span>
+              <span class="hcb-lbl" data-i18n="hero.hcbHours">Hours</span>
             </div>
             <span class="hcb-sep" aria-hidden="true"></span>
             <div class="hcb-unit">
               <span class="hcb-num" id="cd-mins">--</span>
-              <span class="hcb-lbl">Minutes</span>
+              <span class="hcb-lbl" data-i18n="hero.hcbMinutes">Minutes</span>
             </div>
             <span class="hcb-sep" aria-hidden="true"></span>
             <div class="hcb-unit">
               <span class="hcb-num" id="cd-secs">--</span>
-              <span class="hcb-lbl">Seconds</span>
+              <span class="hcb-lbl" data-i18n="hero.hcbSeconds">Seconds</span>
             </div>
           </div>
 
         </div>
-      </div><!-- /.hero-countdown-bar -->
+      </div>
 
     </section>
-
-  
 
     <!-- =============================================
          MEET THE COUPLE SECTION
@@ -223,70 +216,68 @@
     <section id="couple-section" aria-labelledby="couple-heading">
       <div class="couple-wrap">
         <header class="couple-header">
-          <p class="couple-eyebrow"><span>✦</span> Meet the Couple <span>✦</span></p>
-          <h2 id="couple-heading">Two Hearts, One Sacred Journey</h2>
+          <p class="couple-eyebrow"><span>✦</span> <span data-i18n="couple.eyebrow">Meet the Couple</span> <span>✦</span></p>
+          <h2 id="couple-heading" data-i18n="couple.heading">Two Hearts, One Sacred Journey</h2>
           <div class="couple-ornament" aria-hidden="true">— ✦ ❋ ✦ —</div>
-          <p class="couple-intro">With hearts full of gratitude, Chinmay and Khushi invite you to celebrate the beginning of their beautiful forever.</p>
+          <p class="couple-intro" data-i18n="couple.intro">With hearts full of gratitude, Chinmay and Khushi invite you to celebrate the beginning of their beautiful forever.</p>
         </header>
 
         <div class="couple-grid">
           <article class="couple-profile groom-profile">
             <div class="profile-photo profile-photo-groom" aria-label="Portrait space for Chinmay Jain">
-              <!-- Replace this panel with a portrait image when available. -->
-              <span class="profile-badge">✦ The Groom</span>
+              <span class="profile-badge" data-i18n="couple.groomBadge">✦ The Groom</span>
               <div class="profile-monogram" aria-hidden="true">C</div>
               <div class="profile-photo-caption">
-                <span>With warmth &amp; devotion</span>
-                <h3>Chinmay Jain</h3>
+                <span data-i18n="couple.groomCaption">With warmth &amp; devotion</span>
+                <h3 data-i18n="couple.groomName">Chinmay Jain</h3>
               </div>
             </div>
             <dl class="profile-details">
               <div>
-                <dt><i class="fa-solid fa-people-roof" aria-hidden="true"></i> Family</dt>
-                <dd>Son of Mr. Vijay Kumar Jain &amp; Mrs. Rinku Jain</dd>
+                <dt><i class="fa-solid fa-people-roof" aria-hidden="true"></i> <span data-i18n="couple.dtFamily">Family</span></dt>
+                <dd data-i18n="couple.groomParents">Son of Mr. Vijay Kumar Jain &amp; Mrs. Rinku Jain</dd>
               </div>
               <div>
-                <dt><i class="fa-solid fa-map-pin" aria-hidden="true"></i> Roots</dt>
-                <dd>Paara, Bhind, Madhya Pradesh</dd>
+                <dt><i class="fa-solid fa-map-pin" aria-hidden="true"></i> <span data-i18n="couple.dtRoots">Roots</span></dt>
+                <dd data-i18n="couple.groomRoots">Paara, Bhind, Madhya Pradesh</dd>
               </div>
               <div>
-                <dt><i class="fa-solid fa-house" aria-hidden="true"></i> Residence</dt>
-                <dd>Bhopal, Madhya Pradesh</dd>
+                <dt><i class="fa-solid fa-house" aria-hidden="true"></i> <span data-i18n="couple.dtResidence">Residence</span></dt>
+                <dd data-i18n="couple.groomResidence">Bhopal, Madhya Pradesh</dd>
               </div>
             </dl>
             <div class="profile-about">
-              <span>✦ About Chinmay</span>
-              <p>Grounded in family values and gratitude, Chinmay looks forward to beginning this new chapter surrounded by the love and blessings of those closest to him.</p>
+              <span data-i18n="couple.groomAboutTitle">✦ About Chinmay</span>
+              <p data-i18n="couple.groomAboutText">Grounded in family values and gratitude, Chinmay looks forward to beginning this new chapter surrounded by the love and blessings of those closest to him.</p>
             </div>
           </article>
 
           <article class="couple-profile bride-profile">
             <div class="profile-photo profile-photo-bride" aria-label="Portrait space for Khushi Jain">
-              <!-- Replace this panel with a portrait image when available. -->
-              <span class="profile-badge">✦ The Bride</span>
+              <span class="profile-badge" data-i18n="couple.brideBadge">✦ The Bride</span>
               <div class="profile-monogram" aria-hidden="true">K</div>
               <div class="profile-photo-caption">
-                <span>With grace &amp; joy</span>
-                <h3>Khushi Jain</h3>
+                <span data-i18n="couple.brideCaption">With grace &amp; joy</span>
+                <h3 data-i18n="couple.brideName">Khushi Jain</h3>
               </div>
             </div>
             <dl class="profile-details">
               <div>
-                <dt><i class="fa-solid fa-people-roof" aria-hidden="true"></i> Family</dt>
-                <dd>Daughter of Mr. Vinod Jain &amp; Mrs. Sunita Jain</dd>
+                <dt><i class="fa-solid fa-people-roof" aria-hidden="true"></i> <span data-i18n="couple.dtFamily">Family</span></dt>
+                <dd data-i18n="couple.brideParents">Daughter of Mr. Vinod Jain &amp; Mrs. Sunita Jain</dd>
               </div>
               <div>
-                <dt><i class="fa-solid fa-map-pin" aria-hidden="true"></i> Hometown</dt>
-                <dd>Firozabad, Uttar Pradesh</dd>
+                <dt><i class="fa-solid fa-map-pin" aria-hidden="true"></i> <span data-i18n="couple.dtHometown">Hometown</span></dt>
+                <dd data-i18n="couple.brideHometown">Firozabad, Uttar Pradesh</dd>
               </div>
               <div>
-                <dt><i class="fa-solid fa-house" aria-hidden="true"></i> Residence</dt>
-                <dd>Firozabad, Uttar Pradesh</dd>
+                <dt><i class="fa-solid fa-house" aria-hidden="true"></i> <span data-i18n="couple.dtResidence">Residence</span></dt>
+                <dd data-i18n="couple.brideResidence">Firozabad, Uttar Pradesh</dd>
               </div>
             </dl>
             <div class="profile-about">
-              <span>✦ About Khushi</span>
-              <p>With a joyful heart and a deep connection to her loved ones, Khushi warmly welcomes this cherished new beginning and the memories it will bring.</p>
+              <span data-i18n="couple.brideAboutTitle">✦ About Khushi</span>
+              <p data-i18n="couple.brideAboutText">With a joyful heart and a deep connection to her loved ones, Khushi warmly welcomes this cherished new beginning and the memories it will bring.</p>
             </div>
           </article>
         </div>
@@ -294,93 +285,24 @@
     </section>
 
     <!-- =============================================
-         CAPTURED MOMENTS SECTION
-    ============================================== -->
-    <!-- <section id="moments-section" aria-labelledby="moments-heading">
-      <div class="moments-wrap">
-        <header class="moments-header">
-          <p class="moments-eyebrow"><span></span> Chinmay &amp; Khushi <span></span></p>
-          <h2 id="moments-heading">Captured Moments</h2>
-          <p class="moments-subtitle">“A glimpse into our journey together.”</p>
-          <div class="moments-ornament" aria-hidden="true">— ✦ —</div>
-        </header>
-
-        <div class="moments-carousel">
-          <button class="moments-arrow moments-prev" type="button" aria-label="Show previous moments">
-            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <div class="moments-viewport" id="moments-viewport" tabindex="0" aria-label="Captured moments gallery">
-            <div class="moments-track">
-              <article class="moment-card">
-                <div class="moment-image"><img src="assets/images/ring%20arrangement.jpg" alt="Wedding rings arranged for the ceremony"><span>Ring Ceremony</span></div>
-                
-              </article>
-              <article class="moment-card">
-                <div class="moment-image"><img src="assets/images/haldii.png" alt="Haldi ceremony celebration"><span>Haldi Utsav</span></div>
-                <div class="moment-meta"><span>Joy &amp; Turmeric</span><time datetime="2026-12-04">✦ Dec 2026</time></div>
-                <h3>Sunlit Smiles &amp; Sacred Blessings</h3>
-              </article>
-              <article class="moment-card">
-                <div class="moment-image"><img src="assets/images/sangeet.jpg" alt="Sangeet celebration"><span>Sangeet Night</span></div>
-                <div class="moment-meta"><span>Music &amp; Merriment</span><time datetime="2026-12-04">✦ Dec 2026</time></div>
-                <h3>Melodies for a New Chapter</h3>
-              </article>
-              <article class="moment-card">
-                <div class="moment-image"><img src="assets/images/baraat.png" alt="Baraat procession"><span>Baraat</span></div>
-                <div class="moment-meta"><span>A Grand Welcome</span><time datetime="2026-12-05">✦ Dec 2026</time></div>
-                <h3>Celebrating Every Step Together</h3>
-              </article>
-              <article class="moment-card">
-                <div class="moment-image"><img src="assets/images/varmala.png" alt="Varmala ceremony"><span>Varmala</span></div>
-                <div class="moment-meta"><span>Garlands of Love</span><time datetime="2026-12-05">✦ Dec 2026</time></div>
-                <h3>Where Two Hearts Become One</h3>
-              </article>
-              <article class="moment-card">
-                <div class="moment-image"><img src="assets/images/saathphere.png" alt="Sacred wedding rituals"><span>Saath Phere</span></div>
-                <div class="moment-meta"><span>Seven Sacred Vows</span><time datetime="2026-12-05">✦ Dec 2026</time></div>
-                <h3>A Lifetime Around the Holy Fire</h3>
-              </article>
-            </div>
-          </div>
-          <button class="moments-arrow moments-next" type="button" aria-label="Show next moments">
-            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div class="moments-dots" role="tablist" aria-label="Choose a captured moment">
-          <button type="button" class="active" aria-label="Show moment 1" aria-selected="true"></button>
-          <button type="button" aria-label="Show moment 2" aria-selected="false"></button>
-          <button type="button" aria-label="Show moment 3" aria-selected="false"></button>
-          <button type="button" aria-label="Show moment 4" aria-selected="false"></button>
-          <button type="button" aria-label="Show moment 5" aria-selected="false"></button>
-          <button type="button" aria-label="Show moment 6" aria-selected="false"></button>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- =============================================
          EVENTS / SCHEDULE SECTION
     ============================================== -->
   <section id="events-section" class="timeline-section" aria-labelledby="timeline-heading">
 
-    <!-- ══════════════════════════════════════
-         SECTION HEADER
-    ══════════════════════════════════════ -->
     <div class="timeline-header" >
       <p class="timeline-eyebrow">
         <span class="eyebrow-star">✦</span>
-        Shubh Vivaha Utsav &nbsp;·&nbsp; Chinmay &amp; Khushi
+        <span data-i18n="events.eyebrow">Shubh Vivaha Utsav &nbsp;·&nbsp; Chinmay &amp; Khushi</span>
         <span class="eyebrow-star">✦</span>
       </p>
-      <h2 class="timeline-title" id="timeline-heading">Celebration Itinerary &amp; Events</h2>
-      <p class="timeline-subtitle">
+      <h2 class="timeline-title" id="timeline-heading" data-i18n="events.title">Celebration Itinerary &amp; Events</h2>
+      <div class="couple-ornament" aria-hidden="true">— ✦ ❋ ✦ —</div>
+      <p class="timeline-subtitle" data-i18n="events.subtitle">
         A majestic two-day affair honoring sacred Vedic rituals, high-spirited music,
          and grand celebrations in Uttar Pradesh on December 04–05, 2026.
       </p>
     </div>
 
-    <!-- ══════════════════════════════════════
-         TAB BAR
-    ══════════════════════════════════════ -->
     <div class="timeline-tabs" role="tablist" aria-label="Wedding day filter">
 
       <button
@@ -389,7 +311,7 @@
         aria-selected="true"
         data-tab="all"
         aria-controls="day-1-panel day-2-panel"
-      >All Celebrations <span class="tab-count">8</span></button>
+      ><span data-i18n="events.tabAll">All Celebrations</span> <span class="tab-count">8</span></button>
 
       <button
         class="tab-btn"
@@ -398,8 +320,8 @@
         data-tab="day1"
         aria-controls="day-1-panel"
       >
-        Day 1: The Celebrations Begin &nbsp;
-        <span class="tab-date">Dec 04</span>
+        <span data-i18n="events.tabDay1">Day 1: The Celebrations Begin</span> &nbsp;
+        <span class="tab-date" data-i18n="events.tabDate1">Dec 04</span>
       </button>
 
       <button
@@ -409,25 +331,23 @@
         data-tab="day2"
         aria-controls="day-2-panel"
       >
-        Day 2: Chakravarti Vivah &nbsp;
-        <span class="tab-date">Dec 05</span>
+        <span data-i18n="events.tabDay2">Day 2: Chakravarti Vivah</span> &nbsp;
+        <span class="tab-date" data-i18n="events.tabDate2">Dec 05</span>
       </button>
 
     </div>
 
-    <!-- ══════════════════════════════════════
-         DAY 1 — AVC (Aashirwad & Vidhi Ceremony)
-    ══════════════════════════════════════ -->
+    <!-- DAY 1 PANEL -->
     <div class="day-group" id="day-1-panel" data-day="day1" role="tabpanel">
       <div class="day-label">
         <div class="day-badge">
-          <span class="day-number">Day 1</span>
+          <span class="day-number" data-i18n="events.day1Badge">Day 1</span>
           <span class="day-separator">·</span>
-          <span class="day-name">The Celebrations Begin</span>
+          <span class="day-name" data-i18n="events.day1Name">The Celebrations Begin</span>
         </div>
         <div class="day-date">
           <i class="fa-regular fa-calendar-days"></i>
-          Friday, December 4th, 2026
+          <span data-i18n="events.day1Date">Friday, December 4th, 2026</span>
         </div>
       </div>
 
@@ -437,16 +357,15 @@
         <div class="event-card">
           <div class="image-container">
             <img src="assets/images/Faal Daan.png" alt="Tikka faal daan" class="event-image">
-            <span class="event-cat-badge">Tikka Faal Daan</span>
+            <span class="event-cat-badge" data-i18n="events.tikkaBadge">Tikka Faal Daan</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Blessing & Shagun Soirée</h3>
-            <!-- <p class="event-subtitle">Auspicious Shagun &amp; Ancestral Betrothal Blessing</p> -->
+            <h3 class="event-title" data-i18n="events.tikkaTitle">The Blessing &amp; Shagun Soirée</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>11:00 AM</span>
             </div>
-            <p class="event-subtitle">Intricate henna designs, traditional welcome blessings, and shagun exchange for the bride and family.</p>
+            <p class="event-subtitle" data-i18n="events.tikkaDesc">Intricate henna designs, traditional welcome blessings, and shagun exchange for the bride and family.</p>
           </div>
         </div>
 
@@ -454,16 +373,15 @@
         <div class="event-card">
           <div class="image-container">
             <img src="assets/images/ring arrangement.jpg" alt="Ring Ceremony" class="event-image">
-            <span class="event-cat-badge">Ring Ceremony</span>
+            <span class="event-cat-badge" data-i18n="events.ringBadge">Ring Ceremony</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Infinity Exchange</h3>
-            <!-- <p class="event-subtitle">Exchange of Rings &amp; Family Blessings</p> -->
+            <h3 class="event-title" data-i18n="events.ringTitle">The Infinity Exchange</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>11:00 AM</span>
             </div>
-            <p class="event-subtitle">A joyous exchange of rings binding two hearts with the blessings of both families.</p>
+            <p class="event-subtitle" data-i18n="events.ringDesc">A joyous exchange of rings binding two hearts with the blessings of both families.</p>
           </div>
         </div>
 
@@ -471,16 +389,15 @@
         <div class="event-card">
           <div class="image-container">
             <img src="assets/images/haldii.png" alt="Haldi" class="event-image">
-            <span class="event-cat-badge">Haldi</span>
+            <span class="event-cat-badge" data-i18n="events.haldiBadge">Haldi</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Yellow Glow Affair</h3>
-            <!-- <p class="event-subtitle">The Playful/Auspicious Ceremony of Turmeric</p> -->
+            <h3 class="event-title" data-i18n="events.haldiTitle">The Yellow Glow Affair</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>11:00 AM</span>
             </div>
-            <p class="event-subtitle">The bride and groom are anointed with turmeric paste for radiance and blessings.</p>
+            <p class="event-subtitle" data-i18n="events.haldiDesc">The bride and groom are anointed with turmeric paste for radiance and blessings.</p>
           </div>
         </div>
 
@@ -488,35 +405,32 @@
         <div class="event-card">
           <div class="image-container">
             <img src="assets/images/sangeet.jpg" alt="Sangeet night" class="event-image">
-            <span class="event-cat-badge">Sangeet</span>
+            <span class="event-cat-badge" data-i18n="events.sangeetBadge">Sangeet</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Big Bollywood Night</h3>
-            <!-- <p class="event-subtitle">Festival of Melodies and Celebration</p> -->
+            <h3 class="event-title" data-i18n="events.sangeetTitle">The Big Bollywood Night</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>7:00 PM</span>
             </div>
-            <p class="event-subtitle">Music, dance, and celebration with both families under the stars.</p>
+            <p class="event-subtitle" data-i18n="events.sangeetDesc">Music, dance, and celebration with both families under the stars.</p>
           </div>
         </div>
 
-      </div><!-- /.timeline-grid day1 -->
-    </div><!-- /.day-group day1 -->
+      </div>
+    </div>
 
-    <!-- ══════════════════════════════════════
-         DAY 2 — VIVAHA (Wedding Ceremony)
-    ══════════════════════════════════════ -->
+    <!-- DAY 2 PANEL -->
     <div class="day-group" id="day-2-panel" data-day="day2" role="tabpanel">
       <div class="day-label">
         <div class="day-badge">
-          <span class="day-number">Day 2</span>
+          <span class="day-number" data-i18n="events.day2Badge">Day 2</span>
           <span class="day-separator">·</span>
-          <span class="day-name">Chakravarti Vivah</span>
+          <span class="day-name" data-i18n="events.day2Name">Chakravarti Vivah</span>
         </div>
         <div class="day-date">
           <i class="fa-regular fa-calendar-days"></i>
-          Saturday, December 5th, 2026
+          <span data-i18n="events.day2Date">Saturday, December 5th, 2026</span>
         </div>
       </div>
 
@@ -526,16 +440,15 @@
         <div class="event-card">
           <div class="image-container">
             <img src="./assets/images/vidhan.png" alt="Vidhan" class="event-image">
-            <span class="event-cat-badge">Vidhan</span>
+            <span class="event-cat-badge" data-i18n="events.vidhanBadge">Vidhan</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Divine Prologue</h3>
-            <!-- <p class="event-subtitle">Vedic Pre-Wedding Rituals &amp; Prayers</p> -->
+            <h3 class="event-title" data-i18n="events.vidhanTitle">The Divine Prologue</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>9:30 AM</span>
             </div>
-            <p class="event-subtitle">Sacred Vedic rituals performed to seek divine blessings for the union.</p>
+            <p class="event-subtitle" data-i18n="events.vidhanDesc">Sacred Vedic rituals performed to seek divine blessings for the union.</p>
           </div>
         </div>
 
@@ -543,16 +456,15 @@
         <div class="event-card">
           <div class="image-container">
             <img src="./assets/images/baraat.png" alt="Baarat procession" class="event-image">
-            <span class="event-cat-badge">Baraat</span>
+            <span class="event-cat-badge" data-i18n="events.baraatBadge">Baraat</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Grand Entry</h3>
-            <!-- <p class="event-subtitle">Grand Groom's Procession &amp; Welcome</p> -->
+            <h3 class="event-title" data-i18n="events.baraatTitle">The Grand Entry</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>4:30 PM</span>
             </div>
-            <p class="event-subtitle">The groom arrives with his family and friends in a joyful procession.</p>
+            <p class="event-subtitle" data-i18n="events.baraatDesc">The groom arrives with his family and friends in a joyful procession.</p>
           </div>
         </div>
 
@@ -560,16 +472,15 @@
         <div class="event-card">
           <div class="image-container">
             <img src="./assets/images/varmala.png" alt="Varmala & Reception" class="event-image">
-            <span class="event-cat-badge">Varmala</span>
+            <span class="event-cat-badge" data-i18n="events.varmalaBadge">Varmala</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Floral Exchange</h3>
-            <!-- <p class="event-subtitle">Exchange of Garlands &amp; Grand Welcome</p> -->
+            <h3 class="event-title" data-i18n="events.varmalaTitle">The Floral Exchange</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>6:15 PM</span>
             </div>
-            <p class="event-subtitle">The bride and groom exchange flower garlands, marking the acceptance of the union.</p>
+            <p class="event-subtitle" data-i18n="events.varmalaDesc">The bride and groom exchange flower garlands, marking the acceptance of the union.</p>
           </div>
         </div>
 
@@ -577,21 +488,20 @@
         <div class="event-card">
           <div class="image-container">
             <img src="assets/images/saathphere.png" alt="Hast Melap ceremony" class="event-image">
-            <span class="event-cat-badge">Hast Melap</span>
+            <span class="event-cat-badge" data-i18n="events.hastMelapBadge">Hast Melap</span>
           </div>
           <div class="card-content">
-            <h3 class="event-title">The Sacred Hand-Tying Ritual</h3>
-            <!-- <p class="event-subtitle">Auspicious Joining of Hands &amp; Saath Phere</p> -->
+            <h3 class="event-title" data-i18n="events.hastMelapTitle">The Sacred Hand-Tying Ritual</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
               <span>12:45 PM</span>
             </div>
-            <p class="event-subtitle">Sacred ceremony of joining hands and taking seven vows around the holy fire.</p>
+            <p class="event-subtitle" data-i18n="events.hastMelapDesc">Sacred ceremony of joining hands and taking seven vows around the holy fire.</p>
           </div>
         </div>
 
-      </div><!-- /.timeline-grid day2 -->
-    </div><!-- /.day-group day2 -->
+      </div>
+    </div>
 
   </section>
     
@@ -601,194 +511,167 @@
   <section id="families-section" aria-labelledby="families-heading">
     <div class="families-wrap">
 
-      <!-- ── Section Header ── -->
       <div class="families-header">
         <span class="families-eyebrow">
-          <span class="fam-eye-star">★</span> Two Families United in Love <span class="fam-eye-star">★</span>
+          <span class="fam-eye-star">★</span> <span data-i18n="families.eyebrow">Two Families United in Love</span> <span class="fam-eye-star">★</span>
         </span>
-        <h2 id="families-heading" class="families-title">Our Families</h2>
-        <div class="families-ornament" aria-hidden="true">❖ ✦ ❖</div>
-        <p class="families-quote">
+        <h2 id="families-heading" class="families-title" data-i18n="families.title">Our Families</h2>
+        <div class="couple-ornament" aria-hidden="true">— ✦ ❋ ✦ —</div>
+        <p class="families-quote" data-i18n="families.quote">
           "Grounded in the grace of the Almighty, 
           lifted by the love of our elders—we invite you to witness the beautiful meeting of our roots and our future."
         </p>
       </div>
 
-      <!-- ── Two-column layout ── -->
       <div class="families-columns">
 
-        <!-- ════════════════════════════
-             GROOM'S SIDE
-        ════════════════════════════ -->
+        <!-- GROOM'S SIDE -->
         <div class="fam-col">
           <div class="fam-col-header">
-            <h3 class="fam-family-name">Groom's Family</h3>
+            <h3 class="fam-family-name" data-i18n="families.groomFamTitle">Groom's Family</h3>
             <p class="fam-hometown">
               <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              Hometown: <strong>Paara, Bhind, Madhaya Pradesh</strong>
+              <span data-i18n="families.hometownLbl">Hometown:</span> <strong data-i18n="families.groomHometownVal">Paara, Bhind, Madhaya Pradesh</strong>
               <span class="fam-hometown-dot">·</span>
-              Current: <strong>Bhopal, Madhaya Pradesh</strong>
+              <span data-i18n="families.currentLbl">Current:</span> <strong data-i18n="families.groomCurrentVal">Bhopal, Madhaya Pradesh</strong>
             </p>
           </div>
 
-          <!-- Parents card -->
           <div class="fam-card">
             <div class="fam-card-photo-wrap">
               <div class="fam-photo-placeholder" aria-label="Photo of Groom's parents">
                <img src="./assets/images/mummy_papa.jpeg" alt="Groom's parents">
               </div>
-              <span class="fam-photo-badge">Parents</span>
+              <span class="fam-photo-badge" data-i18n="families.parentsBadge">Parents</span>
             </div>
             <div class="fam-card-body">
-              <span class="fam-card-eyebrow">Groom's Revered Parents</span>
-              <h4 class="fam-card-name">Mr. Vijay Kumar Jain &amp; Mrs. Rinku</h4>
+              <span class="fam-card-eyebrow" data-i18n="families.groomParentsEyebrow">Groom's Revered Parents</span>
+              <h4 class="fam-card-name" data-i18n="families.groomParentsNames">Dr. Vijay Kumar Jain &amp; Mrs. Rinku</h4>
               <dl class="fam-card-details">
                 <div class="fam-detail-row">
-                  <dt>Mr. Vijay Kumar Jain:</dt>
-                  <dd>Senior Secondary Teacher, St. SRS School (GanjBasoda)</dd>
+                  <dt data-i18n="families.drVijayLbl">Dr. Vijay Kumar Jain:</dt>
+                  <dd data-i18n="families.drVijayVal">Senior Secondary Teacher, St. SRS School (GanjBasoda)</dd>
                 </div>
                 <div class="fam-detail-row">
-                  <dt>Mrs. Rinku Jain:</dt>
-                  <dd>Senior Secondary Teacher, Serving Multiple Secondary Schools</dd>
+                  <dt data-i18n="families.mrsRinkuLbl">Mrs. Rinku Jain:</dt>
+                  <dd data-i18n="families.mrsRinkuVal">Senior Secondary Teacher, Serving Multiple Secondary Schools</dd>
                 </div>
               </dl>
               <span class="fam-card-tag">
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
-                Family Residence: Bhopal, Madhaya Pradesh
+                <span data-i18n="families.groomResTag">Family Residence: Bhopal, Madhaya Pradesh</span>
               </span>
             </div>
           </div>
 
-          <!-- Ancestral lineage -->
-          <div class="fam-section-label">Ancestral Lineage &amp; Heritage</div>
+          <div class="fam-section-label" data-i18n="families.heritageTitle">Ancestral Lineage &amp; Heritage</div>
           <div class="fam-lineage-grid">
             <div class="fam-lineage-card">
-              <span class="fam-lineage-type">Paternal (Dada – Dadi)</span>
-              <p class="fam-lineage-name">Shree Prakash Chandra Jain</p>
-              <p class="fam-lineage-spouse">Late Smt. Jyostna V. Kanani</p>
-              <p class="fam-lineage-origin">Hometown: Bhind, Madhaya Pradesh</p>
+              <span class="fam-lineage-type" data-i18n="families.paternalLbl">Paternal (Dada – Dadi)</span>
+              <p class="fam-lineage-name" data-i18n="families.groomDada">Shree Prakash Chandra Jain</p>
+              <p class="fam-lineage-spouse" data-i18n="families.groomDadi">Late Smt. Jyostna V. Kanani</p>
+              <p class="fam-lineage-origin" data-i18n="families.groomPaternalOrigin">Hometown: Bhind, Madhaya Pradesh</p>
             </div>
             <div class="fam-lineage-card">
-              <span class="fam-lineage-type">Maternal (Nana – Nani)</span>
-              <p class="fam-lineage-name">Late Shree Babulal Jain</p>
-              <p class="fam-lineage-spouse">Smt. Jasoda Jain</p>
-              <p class="fam-lineage-origin">Hometown: Bhopal, Madhaya Pradesh</p>
+              <span class="fam-lineage-type" data-i18n="families.maternalLbl">Maternal (Nana – Nani)</span>
+              <p class="fam-lineage-name" data-i18n="families.groomNana">Late Shree Babulal Jain</p>
+              <p class="fam-lineage-spouse" data-i18n="families.groomNani">Smt. Jasoda Jain</p>
+              <p class="fam-lineage-origin" data-i18n="families.groomMaternalOrigin">Hometown: Bhopal, Madhaya Pradesh</p>
             </div>
           </div>
-        </div><!-- /.fam-col groom -->
+        </div>
 
-        <!-- ════════════════════════════
-             BRIDE'S SIDE
-        ════════════════════════════ -->
+        <!-- BRIDE'S SIDE -->
         <div class="fam-col">
           <div class="fam-col-header">
-            <h3 class="fam-family-name">Bride's Family</h3>
+            <h3 class="fam-family-name" data-i18n="families.brideFamTitle">Bride's Family</h3>
             <p class="fam-hometown">
               <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              Hometown: <strong>Firozabad, Uttar Pradesh</strong>
+              <span data-i18n="families.hometownLbl">Hometown:</span> <strong data-i18n="families.brideHometownVal">Firozabad, Uttar Pradesh</strong>
               <span class="fam-hometown-dot">·</span>
-              Current: <strong>Firozabad, Uttar Pradesh</strong>
+              <span data-i18n="families.currentLbl">Current:</span> <strong data-i18n="families.brideCurrentVal">Firozabad, Uttar Pradesh</strong>
             </p>
           </div>
 
-          <!-- Parents card -->
           <div class="fam-card">
             <div class="fam-card-photo-wrap">
               <div class="fam-photo-placeholder" aria-label="Photo of Bride's parents">
                 <i class="fa-solid fa-user-group" aria-hidden="true"></i>
               </div>
-              <span class="fam-photo-badge">Parents</span>
+              <span class="fam-photo-badge" data-i18n="families.parentsBadge">Parents</span>
             </div>
             <div class="fam-card-body">
-              <span class="fam-card-eyebrow">Bride's Revered Parents</span>
-              <h4 class="fam-card-name">Mr. Vinod Jain &amp; Mrs. Sunita Jain</h4>
+              <span class="fam-card-eyebrow" data-i18n="families.brideParentsEyebrow">Bride's Revered Parents</span>
+              <h4 class="fam-card-name" data-i18n="families.brideParentsNames">Mr. Vinod Jain &amp; Mrs. Sunita Jain</h4>
               <dl class="fam-card-details">
                 <div class="fam-detail-row">
-                  <dt>Mr. Vinod Jain:</dt>
-                  <dd>Catering Entrepreneur</dd>
+                  <dt data-i18n="families.mrVinodLbl">Mr. Vinod Jain:</dt>
+                  <dd data-i18n="families.mrVinodVal">Catering Entrepreneur</dd>
                 </div>
                 <div class="fam-detail-row">
-                  <dt>Mrs. Sunita Jain:</dt>
-                  <dd>Managing the Home & Family</dd>
+                  <dt data-i18n="families.mrsSunitaLbl">Mrs. Sunita Jain:</dt>
+                  <dd data-i18n="families.mrsSunitaVal">Managing the Home &amp; Family</dd>
                 </div>
               </dl>
               <span class="fam-card-tag">
                 <i class="fa-solid fa-house" aria-hidden="true"></i>
-                Family Residence: Firozabad, Uttar Pradesh
+                <span data-i18n="families.brideResTag">Family Residence: Firozabad, Uttar Pradesh</span>
               </span>
             </div>
           </div>
 
-          <!-- Ancestral lineage -->
-          <div class="fam-section-label">Ancestral Lineage &amp; Heritage</div>
+          <div class="fam-section-label" data-i18n="families.heritageTitle">Ancestral Lineage &amp; Heritage</div>
           <div class="fam-lineage-grid">
             <div class="fam-lineage-card">
-              <span class="fam-lineage-type">Paternal (Dada – Dadi)</span>
-              <p class="fam-lineage-name">Late Pt. Suryanarayan Pandey</p>
-              <p class="fam-lineage-spouse">Late Smt. Vidya Devi Pandey</p>
-              <p class="fam-lineage-origin">Ancestral Roots: Varanasi, Uttar Pradesh</p>
+              <span class="fam-lineage-type" data-i18n="families.paternalLbl">Paternal (Dada – Dadi)</span>
+              <p class="fam-lineage-name" data-i18n="families.brideDada">Late Pt. Suryanarayan Pandey</p>
+              <p class="fam-lineage-spouse" data-i18n="families.brideDadi">Late Smt. Vidya Devi Pandey</p>
+              <p class="fam-lineage-origin" data-i18n="families.bridePaternalOrigin">Ancestral Roots: Varanasi, Uttar Pradesh</p>
             </div>
             <div class="fam-lineage-card">
-              <span class="fam-lineage-type">Maternal (Nana – Nani)</span>
-              <p class="fam-lineage-name">Late Shree Harishanker Shukla</p>
-              <p class="fam-lineage-spouse">Smt. Kamleshwari Shukla</p>
-              <p class="fam-lineage-origin">Hometown: Prayagraj / Allahabad, U.P.</p>
+              <span class="fam-lineage-type" data-i18n="families.maternalLbl">Maternal (Nana – Nani)</span>
+              <p class="fam-lineage-name" data-i18n="families.brideNana">Late Shree Harishanker Shukla</p>
+              <p class="fam-lineage-spouse" data-i18n="families.brideNani">Smt. Kamleshwari Shukla</p>
+              <p class="fam-lineage-origin" data-i18n="families.brideMaternalOrigin">Hometown: Prayagraj / Allahabad, U.P.</p>
             </div>
           </div>
 
-          <!-- Sister & Brother-in-law -->
-           <div class="fam-section-label">Sister</div>
+          <!-- Sisters -->
+          <div class="fam-section-label" data-i18n="families.sisterTitle">Sister</div>
           <div class="fam-sibling-card">
-            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Deel D. Kanani">
+            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Mrs. Astha Jain">
               <i class="fa-solid fa-user" aria-hidden="true"></i>
             </div>
             <div class="fam-sibling-body">
               <div class="fam-sibling-name-row">
-                <h4 class="fam-sibling-name">Mrs. Astha Jain</h4>
-                <span class="fam-sibling-badge">Bride's Sister</span>
+                <h4 class="fam-sibling-name" data-i18n="families.asthaName">Mrs. Astha Jain</h4>
+                <span class="fam-sibling-badge" data-i18n="families.asthaBadge">Bride's Sister</span>
               </div>
-              <p class="fam-sibling-detail"><strong>Profession:</strong> Investment Banker &amp; VP, Standard Chartered Bank</p>
-              <p class="fam-sibling-detail"><strong>Residence:</strong> Firozabad, Uttar Pradesh</p>
-              <p class="fam-sibling-note">Eagerly awaiting to welcome her brother-in-law into the family!</p>
+              <p class="fam-sibling-detail"><strong data-i18n="families.professionLbl">Profession:</strong> <span data-i18n="families.asthaProf">Investment Banker &amp; VP, Standard Chartered Bank</span></p>
+              <p class="fam-sibling-detail"><strong data-i18n="families.residenceLbl">Residence:</strong> <span data-i18n="families.asthaRes">Firozabad, Uttar Pradesh</span></p>
+              <p class="fam-sibling-note" data-i18n="families.asthaNote">Eagerly awaiting to welcome her brother-in-law into the family!</p>
             </div>
-            </div>
-            <div class="fam-sibling-card">
-            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Deel D. Kanani">
+          </div>
+
+          <div class="fam-sibling-card">
+            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Mrs. Paari Jain">
               <i class="fa-solid fa-user" aria-hidden="true"></i>
             </div>
             <div class="fam-sibling-body">
               <div class="fam-sibling-name-row">
-                <h4 class="fam-sibling-name">Mrs. Paari Jain</h4>
-                <span class="fam-sibling-badge">Bride's Sister</span>
+                <h4 class="fam-sibling-name" data-i18n="families.paariName">Mrs. Paari Jain</h4>
+                <span class="fam-sibling-badge" data-i18n="families.paariBadge">Bride's Sister</span>
               </div>
-              <p class="fam-sibling-detail"><strong>Profession:</strong> Studying for  Chartered Accountant</p>
-              <p class="fam-sibling-detail"><strong>Residence:</strong> Firozabad, Uttar Pradesh</p>
-              <p class="fam-sibling-note">Eagerly awaiting to welcome her brother-in-law into the family!</p>
+              <p class="fam-sibling-detail"><strong data-i18n="families.professionLbl">Profession:</strong> <span data-i18n="families.paariProf">Studying for Chartered Accountant</span></p>
+              <p class="fam-sibling-detail"><strong data-i18n="families.residenceLbl">Residence:</strong> <span data-i18n="families.paariRes">Firozabad, Uttar Pradesh</span></p>
+              <p class="fam-sibling-note" data-i18n="families.paariNote">Eagerly awaiting to welcome her brother-in-law into the family!</p>
             </div>
+          </div>
 
-          <!-- <div class="fam-section-label">Sister &amp; Brother-in-Law</div>
-          <div class="fam-sibling-card">
-            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Mrs. Ananya Sharma and Dr. Aditya Sharma">
-              <i class="fa-solid fa-user-group" aria-hidden="true"></i>
-            </div>
-            <div class="fam-sibling-body">
-              <div class="fam-sibling-name-row">
-                <h4 class="fam-sibling-name">Mrs. Ananya (Pandey) Sharma &amp; Dr. Aditya Sharma</h4>
-                <span class="fam-sibling-badge bride-badge">Sister &amp; Husband</span>
-              </div>
-              <p class="fam-sibling-detail"><strong>Professions:</strong> Senior UI/UX Architect (Adobe) &amp; Associate Cardiologist (KEM Hospital)</p>
-              <p class="fam-sibling-detail"><strong>Current City:</strong> Bengaluru &amp; Pune</p>
-              <p class="fam-sibling-note">
-                <i class="fa-solid fa-heart" aria-hidden="true"></i>
-                Married with blessings · Residing happily in Bangalore
-              </p>
-            </div>
-          </div> -->
+        </div>
 
-        </div><!-- /.fam-col bride -->
-
-      </div><!-- /.families-columns -->
-    </div><!-- /.families-wrap -->
+      </div>
+    </div>
   </section>
 
   <!-- =============================================
@@ -797,44 +680,41 @@
   <section id="venue-section" aria-labelledby="venue-heading">
     <div class="venue-outer">
 
-      <!-- ── Section Header ── -->
       <div class="venue-header">
         <p class="venue-eyebrow">
           <span class="fam-eye-star">★</span>
-          Sacred Destination &nbsp;·&nbsp; Find Us Here
+          <span data-i18n="venue.eyebrow">Sacred Destination &nbsp;·&nbsp; Find Us Here</span>
           <span class="fam-eye-star">★</span>
         </p>
-        <h2 id="venue-heading" class="venue-title">The Venue &amp; Location Guide</h2>
-        <p class="venue-desc">
+        <h2 id="venue-heading" class="venue-title" data-i18n="venue.title">The Venue &amp; Location Guide</h2>
+        <div class="couple-ornament" aria-hidden="true">— ✦ ❋ ✦ —</div>
+        <p class="venue-desc" data-i18n="venue.desc">
           We eagerly await your gracious presence. Everything you need to navigate
           seamlessly to our wedding celebration at Wagholi, Pune.
         </p>
       </div>
 
-      <!-- ── Two-column card ── -->
       <div class="venue-card">
 
-        <!-- LEFT: Info panel -->
         <div class="venue-info">
 
           <span class="venue-official-badge">
             <span class="venue-badge-dot" aria-hidden="true">●</span>
-            Official Wedding Banquet
+            <span data-i18n="venue.officialBadge">Official Wedding Banquet</span>
           </span>
 
-          <h3 class="venue-name">Seasons 24 Banquets</h3>
-          <p class="venue-subtitle-tag">Grand Royal Ballroom Suite</p>
+          <h3 class="venue-name" data-i18n="venue.name">Seasons 24 Banquets</h3>
+          <p class="venue-subtitle-tag" data-i18n="venue.subtitle">Grand Royal Ballroom Suite</p>
 
-          <!-- Detail rows -->
           <ul class="venue-details-list">
             <li class="venue-detail-item">
               <span class="venue-detail-icon" aria-hidden="true">
                 <i class="fa-solid fa-location-dot"></i>
               </span>
               <div>
-                <strong>Location &amp; Floor</strong>
-                <p>Hall No: 3, 4th Floor, Nagar Road, Wagholi, Pune,<br>Maharashtra – 412207</p>
-                <span class="venue-landmark">Landmark: Next to Dhaval Shivtirth &amp; Skylights Apartment</span>
+                <strong data-i18n="venue.locationTitle">Location &amp; Floor</strong>
+                <p data-i18n="venue.address">Hall No: 3, 4th Floor, Nagar Road, Wagholi, Pune,<br>Maharashtra – 412207</p>
+                <span class="venue-landmark" data-i18n="venue.landmark">Landmark: Next to Dhaval Shivtirth &amp; Skylights Apartment</span>
               </div>
             </li>
             <li class="venue-detail-item">
@@ -842,21 +722,20 @@
                 <i class="fa-regular fa-clock"></i>
               </span>
               <div>
-                <strong>Ceremony Schedule</strong>
-                <p>Baraat Reception &amp; Foyer Drinks: <strong class="venue-time">04:30 PM</strong></p>
-                <p>Auspicious Varmala &amp; Muhurat: <strong class="venue-time">06:15 PM onwards</strong></p>
+                <strong data-i18n="venue.scheduleTitle">Ceremony Schedule</strong>
+                <p><span data-i18n="venue.scheduleBaraat">Baraat Reception &amp; Foyer Drinks:</span> <strong class="venue-time">04:30 PM</strong></p>
+                <p><span data-i18n="venue.scheduleVarmala">Auspicious Varmala &amp; Muhurat:</span> <strong class="venue-time" data-i18n="venue.scheduleVarmalaTime">06:15 PM onwards</strong></p>
               </div>
             </li>
           </ul>
 
-          <!-- Amenities grid -->
           <ul class="venue-amenities">
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Valet Parking Desk</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Dedicated Direct Elevators</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Fully Air Conditioned</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> 4th Floor Welcome Foyer</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityValet">Valet Parking Desk</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityElevator">Dedicated Direct Elevators</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityAC">Fully Air Conditioned</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityFoyer">4th Floor Welcome Foyer</span></li>
           </ul>
-          <!-- Action buttons -->
+
           <div class="venue-actions">
             <a
               href="https://maps.app.goo.gl/CnWHSvuxT5YYBauz9"
@@ -866,7 +745,7 @@
               aria-label="Open Seasons 24 Banquets in Google Maps"
             >
               <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              Open in Google Maps
+              <span data-i18n="venue.btnMap">Open in Google Maps</span>
               <i class="fa-solid fa-arrow-up-right-from-square venue-btn-ext" aria-hidden="true"></i>
             </a>
             <button
@@ -875,24 +754,23 @@
               aria-label="Copy full address to clipboard"
             >
               <i class="fa-regular fa-copy" aria-hidden="true"></i>
-              Copy Full Address
+              <span data-i18n="venue.btnCopy">Copy Full Address</span>
             </button>
           </div>
 
-        </div><!-- /.venue-info -->
+        </div>
 
-        <!-- RIGHT: Map panel -->
         <div class="venue-map">
-          <!-- GPS indicator bar -->
           <div class="venue-map-bar">
             <span class="venue-map-gps-dot" aria-hidden="true"></span>
-            <span class="venue-map-gps-label">Direct GPS Pinpoint</span>
+            <span class="venue-map-gps-label" data-i18n="venue.gpsLabel">Direct GPS Pinpoint</span>
             <a
               href="https://maps.google.com/?q=Seasons+24+Banquets+Wagholi+Pune"
               target="_blank"
               rel="noopener noreferrer"
               class="venue-map-fullscreen"
               aria-label="View fullscreen map"
+              data-i18n="venue.viewFullscreen"
             >View Fullscreen ⛶</a>
           </div>
           <iframe
@@ -905,17 +783,17 @@
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
-        </div><!-- /.venue-map -->
+        </div>
 
-      </div><!-- /.venue-card -->
-    </div><!-- /.venue-outer -->
+      </div>
+    </div>
   </section>
 
   <!-- =============================================
        FOOTER
   ============================================== -->
   <footer id="site-footer" role="contentinfo">
-    <p class="footer-line">The Beginning of Forever: Chinmay &amp; Khushi  &nbsp;·&nbsp;  2026</p>
+    <p class="footer-line" data-i18n="footer.line">The Beginning of Forever: Chinmay &amp; Khushi &nbsp;·&nbsp; 2026</p>
   </footer>
 
   <script src="js/script.js"></script>

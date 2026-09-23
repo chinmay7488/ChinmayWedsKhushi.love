@@ -1,3 +1,29 @@
+CHANGELOG — Chinmay and Khushi Wedding Website
+========================================
+
+[2026-09-23] — Typography & Local Font Assets
+------------------------------------------
+
+TYPOGRAPHY
+  - Added locally hosted English display, heading, and body fonts to support the updated wedding typography
+  - Added Hindi font faces and language-specific font settings for Devanagari text
+  - Refined typography across the hero, couple profiles, venue, event timeline, and section labels
+  - Added a shared title/subtitle style pair and adjusted selected accent colors and spacing
+
+ASSETS
+  - Added English and Hindi font files under assets/fonts/
+
+[2026-09-18] — English & Hindi Language Selection
+--------------------------------------------------
+
+LANGUAGE EXPERIENCE
+  - Added a required English/Hindi language-selection dialog that appears on every new page load and refresh
+  - Added a persistent header control that immediately toggles between English and Hindi after entering the site
+  - Added Hindi translations for visible invitation content, navigation, ceremony details, family details, venue guidance, countdown labels, and clipboard feedback
+  - Updated document language, title, description, selected accessible labels, and map title when Hindi is selected
+  - Added Devanagari-capable heading and body fonts, plus responsive dialog and mobile language-switcher styling
+  - Added keyboard focus containment and background interaction blocking while the selection dialog is open
+
 [2026-09-18] — Wedding Content, Layout & Interaction Updates
 --------------------------------------------------------------
 
@@ -20,8 +46,6 @@ DESIGN & RESPONSIVE LAYOUT
   - Improved tablet and mobile layouts for navigation, event cards, couple profiles, family columns, venue map, and compact screens
   - Updated shared focus styling and visual treatments for interactive components
 
-CHANGELOG — Chinmay and Khushi Wedding Website
-========================================
 
 [2026-09-16] — Section Palette & Timeline Refinement
 -----------------------------------------------------

@@ -30,6 +30,9 @@ const $ = (selector, ctx = document) => ctx.querySelector(selector);
  */
 const $$ = (selector, ctx = document) => Array.from(ctx.querySelectorAll(selector));
 
+/* Language state is shared by the modal and navbar switcher. */
+let currentLanguage = 'en';
+
 
 /* =============================================
    1. STICKY NAVIGATION
@@ -498,4 +501,87 @@ document.addEventListener('DOMContentLoaded', () => {
   initTimelineTabs();
   initMomentsCarousel();
   initVenueCopyAddress();
+});
+
+/* =============================================
+   Language variables loader
+============================================== */
+// Function to load the selected JSON file
+
+
+// Helper function to safely read nested keys like "hero.blessing"
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+}
+
+// Function to fetch JSON and update all data-i18n elements
+async function setLanguage(lang) {
+  try {
+    const response = await fetch(`./lang/${lang}.json`);
+    if (!response.ok) throw new Error(`Could not load lang/${lang}.json (${response.status})`);
+    const translations = await response.json();
+
+    // Update <html lang="..."> attribute (triggers correct CSS fonts)
+    currentLanguage = lang;
+    document.documentElement.lang = lang;
+    localStorage.setItem('preferredLang', lang);
+
+    // Translate all elements with data-i18n attributes
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      const value = getNestedValue(translations, key);
+      if (typeof value === 'string') el.textContent = value;
+    });
+
+    // Update the main navigation switcher button text dynamically
+    const langBtn = document.getElementById('language-switcher');
+    if (langBtn) {
+      langBtn.textContent = lang === 'hi' ? 'English' : 'हिंदी';
+    }
+    return true;
+  } catch (err) {
+    console.error(`Failed to load lang/${lang}.json translation file:`, err);
+    return false;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('language-modal');
+  const langBtn = document.getElementById('language-switcher');
+  const pageContent = Array.from(document.body.children).filter((element) => element !== modal);
+  const savedLanguage = localStorage.getItem('preferredLang');
+
+  const showModal = () => {
+    if (!modal) return;
+    modal.hidden = false;
+    document.body.classList.add('language-modal-open');
+    pageContent.forEach((element) => { element.inert = true; });
+  };
+
+  const hideModal = () => {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove('language-modal-open');
+    pageContent.forEach((element) => { element.inert = false; });
+  };
+
+  setLanguage(savedLanguage === 'hi' ? 'hi' : 'en');
+  if (savedLanguage === 'en' || savedLanguage === 'hi') hideModal();
+  else showModal();
+
+  modal?.querySelectorAll('[data-language-choice]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      if (await setLanguage(button.dataset.languageChoice)) {
+        hideModal();
+        langBtn?.focus();
+      }
+    });
+  });
+
+  if (langBtn) {
+    langBtn.addEventListener('click', async () => {
+      const targetLang = currentLanguage === 'hi' ? 'en' : 'hi';
+      await setLanguage(targetLang);
+    });
+  }
 });
