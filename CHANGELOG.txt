@@ -1,6 +1,14 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-09-24] - Side-specific Couple Names & Background Video
+------------------------------------------------------------
+
+LANGUAGE & MEDIA
+  - Added URL-based side selection: ?side=khushi shows Khushi first, while the default shows Chinmay first
+  - Added English and Hindi translations for both couple name orders; the order is preserved when switching languages
+  - Set the hero video source to video1.mp4 by default and video2.mp4 for Khushi
+
 [2026-09-23] — Typography & Local Font Assets
 ------------------------------------------
 

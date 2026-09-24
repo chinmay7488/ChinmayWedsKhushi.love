@@ -107,6 +107,7 @@
     <section id="hero-section" aria-labelledby="main-heading">
 
       <video
+        id="bg-video"
         class="hero-video"
         autoplay
         muted
@@ -114,7 +115,7 @@
         playsinline
         aria-hidden="true"
       >
-        <source src="./assets/videos/invitation.mp4" type="video/mp4" />
+        <source id="bg-video-source" src="./assets/videos/invitation.mp4" type="video/mp4" />
       </video>
 
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -127,7 +128,7 @@
         <!-- Main title -->
         <h1 id="hero-names" class="hero-names">
           <span data-i18n="hero.namesPrefix">The Wedding of</span>
-          <em class="hero-names-couple" data-i18n="hero.namesCouple">Chinmay &amp; Khushi</em>
+          <em class="hero-names-couple" id="couple-names" data-i18n="hero.namesCouple">Chinmay &amp; Khushi</em>
         </h1>
 
         <!-- Hashtag pill -->

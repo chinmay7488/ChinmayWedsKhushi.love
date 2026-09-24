@@ -23,7 +23,7 @@
   "hero": {
     "blessing": "|| ॐ श्री महावीराय नमः || जैनम जयति शासनम् ||",
     "namesPrefix": "पाणिग्रहण संस्कार",
-    "namesCouple": "चिन्मय एवं खुशी",
+    "namesCouple": "चिन्मय और खुशी",
     "hashtag": "#ChinmayKiKhushi",
     "subtitle": "शुभ विवाह महोत्सव · परिवार एवं मित्रों के साथ पावन क्षणों का उत्सव",
     "metaDate": "04-05 दिसंबर, 2026",
@@ -36,7 +36,8 @@
     "hcbDays": "दिन",
     "hcbHours": "घंटे",
     "hcbMinutes": "मिनट",
-    "hcbSeconds": "सेकंड"
+    "hcbSeconds": "सेकंड",
+    "namesCoupleKhushi": "खुशी और चिन्मय"
   },
   "couple": {
     "eyebrow": "वर-वधू परिचय",

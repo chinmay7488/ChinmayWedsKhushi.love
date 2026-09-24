@@ -32,6 +32,25 @@ const $$ = (selector, ctx = document) => Array.from(ctx.querySelectorAll(selecto
 
 /* Language state is shared by the modal and navbar switcher. */
 let currentLanguage = 'en';
+const isKhushiSide = new URLSearchParams(window.location.search).get('side') === 'khushi';
+
+function updateSidePresentation(translations) {
+  const coupleNames = document.getElementById('couple-names');
+  const namesKey = isKhushiSide ? 'hero.namesCoupleKhushi' : 'hero.namesCouple';
+  const names = getNestedValue(translations, namesKey);
+  if (coupleNames && typeof names === 'string') coupleNames.textContent = names;
+
+  const video = document.getElementById('bg-video');
+  const videoSource = document.getElementById('bg-video-source');
+  if (videoSource) {
+    const source = isKhushiSide ? './video2.mp4' : './assets/videos/invitation.mp4';
+    if (videoSource.getAttribute('src') !== source) {
+      videoSource.setAttribute('src', source);
+      video?.load();
+      video?.play().catch(() => {});
+    }
+  }
+}
 
 
 /* =============================================
@@ -533,6 +552,10 @@ async function setLanguage(lang) {
       if (typeof value === 'string') el.textContent = value;
     });
 
+    // Apply the selected side after translations so language changes keep the
+    // correct name order and video.
+    updateSidePresentation(translations);
+
     // Update the main navigation switcher button text dynamically
     const langBtn = document.getElementById('language-switcher');
     if (langBtn) {
@@ -585,3 +608,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
