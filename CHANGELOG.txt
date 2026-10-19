@@ -1,6 +1,29 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-19] — Personal Photos, Invitation Artwork & Venue Update
+-----------------------------------------------------------------
+
+HERO & INVITATION
+  - Replaced the side-specific hero video with invitation artwork that changes between the groom and bride sides
+  - Added the wedding monogram image to the hero and updated its image styling
+
+COUPLE & FAMILY PROFILES
+  - Added portrait photos for the couple, both sets of parents, and the bride's sisters
+  - Updated groom and bride profile details to show hometown, education, and job information in English and Hindi
+  - Added briefcase icons to the job labels and updated the sister's profession detail
+  - Removed the profile introduction text blocks
+
+VENUE
+  - Replaced the Pune banquet details and map with Janak Vatika in Firozabad
+  - Updated the venue address, landmark, parking, catering, lawn, and decoration details in both languages
+  - Removed the ceremony schedule block from the venue details
+
+DESIGN & ASSETS
+  - Refined the couple photo overlays, family cards, portrait sizing, venue layout, and supporting typography
+  - Added personal photos, side-specific invitation artwork and videos, and the wedding monogram asset
+  - Moved the groom's parents photo from assets/images/ into assets/Personal Photos/
+
 [2026-09-24] - Side-specific Couple Names & Background Video
 ------------------------------------------------------------
 

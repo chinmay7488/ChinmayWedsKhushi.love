@@ -54,24 +54,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Aakriti Italic';
-  src: url('../assets/fonts/Hindi/aakriti_italic.ttf') format('woff2');
-  font-weight: 400;
-  unicode-range: U+0900-097F;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Aakriti Regular';
-  src: url('../assets/fonts/Hindi/aakriti_regular.ttf') format('woff2');
-  font-weight: 400;
-  unicode-range: U+0900-097F;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   /* Wedding palette */
   --color-cream:         #FFFDD0;
@@ -81,6 +63,7 @@
   --color-purple-light:  #b59ce0;
   --color-purple-lightest:  #C2B3E5;
   --color-gold:           #c9a96e;
+  --color-dark-gold:      #B59410;
   --section-temple-background: #fffff0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23c2b3e5' fill-opacity='0.09'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
   /* --image-bg-sections: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23c2b3e5' fill-opacity='0.24'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
@@ -90,7 +73,7 @@
   --font-heading-weight:         800;
   --font-subheading:            'Josefin Slab Italic', Georgia, serif;
   --font-Subheading-weight:     600;
-  --font-body:                  'Josefin Slab Regular', Georgia, serif;
+  --font-body:                  "Josefin Slab", serif;
   --font-body-weight:           400;
   --font-Main:                  'Anoretha Sweet Local', cursive;
         
@@ -528,7 +511,7 @@ body > section {
 }
 
 /* ── Video background ── */
-.hero-video {
+.hero-background-image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -569,6 +552,56 @@ body > section {
   /* Belt-and-braces: ensure centering on all screen sizes */
   align-self: center;
 }
+
+.hero-logo {
+  display: block;
+  width: clamp(120px, 16vw, 190px);
+  height: auto;
+  max-height: 24vh;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(10, 4, 2, 0.22);
+  opacity: 0;
+  animation: fade-up 0.7s ease 0.15s forwards;
+}
+
+/* logo desgin */
+/* Container to center or wrap the card */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Outer Card Frame matching the image design */
+.card-frame {
+  position: relative;
+  width: 100%;
+  max-width: 380px;          /* Adjust width as needed */
+  background-color: var(--color-purple-lightest); /* Soft off-white inner background */
+  border-radius: 28px;        /* Smooth rounded corners */
+  
+  /* Double border effect using padding and solid borders */
+  border: 3px solid var(--color-gold);  /* Outer metallic gold border */
+  padding: 8px;               /* Inner gap creating the double-line effect */
+  outline: 2px solid var(--color-gold); /* Accent border tone */
+  
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Subtle drop shadow */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Inner Image Styling */
+.card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;        /* Matches inner curve */
+  object-fit: cover;
+}
+
 
 /* Eyebrow pill */
 .hero-eyebrow {
@@ -620,7 +653,7 @@ body > section {
   font-family: var(--font-Main);
   color: var(--color-purple-dark);
   font-size: 1.05em;
-  padding: 20px 0;
+  padding: 40px 0 20px 0 ;
 }
 
 /* Hashtag pill below the couple name */
@@ -928,6 +961,16 @@ body > section {
   isolation: isolate;
 }
 
+.profile-portrait {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .profile-photo::before,
 .profile-photo::after {
   content: '';
@@ -956,6 +999,7 @@ body > section {
 
 .profile-photo-caption {
   position: absolute;
+  z-index: 1;
   inset: auto 0 0;
   padding: 3.5rem 1.2rem 1.15rem;
   color: var(--color-ivory);
@@ -964,7 +1008,7 @@ body > section {
 
 .profile-photo-caption span {
   display: block;
-  color: var(--color-gold);
+  color: var(--color-ivory);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -979,12 +1023,13 @@ body > section {
 
 .profile-badge {
   position: absolute;
+  z-index: 1;
   top: 0.8rem;
   left: 0.8rem;
   padding: 0.22rem 0.65rem;
   border-radius: 99px;
   background: var(--color-purple-dark);
-  color: var(--color-gold);
+  color: var(--color-ivory);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -1269,7 +1314,7 @@ body > section {
 /* ── Two-column card ── */
 .venue-card {
   display: grid;
-  grid-template-columns: minmax(300px, 420px) 1fr;
+  grid-template-columns: minmax(300px, 590px) 1fr;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 32px color-mix(in srgb, var(--color-purple-lightest) 50%, transparent) ;
@@ -1940,7 +1985,7 @@ body > section {
 }
 /* ── Individual column ── */
 .fam-col {
-  background-color: #fff;
+  background-color: color-mix(in srgb, var(--color-purple-lightest) 60%, transparent);
   border: 1px solid var(--color-purple-dark);
   border-radius: 16px;
   padding: 1.8rem 1.6rem;
@@ -1963,7 +2008,7 @@ body > section {
 /* Family name — large centered bold serif */
 .fam-family-name {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
-  color: var(--color-gold);
+  color: var(--color-dark-gold);
   margin: 0 0 0.5rem;
   line-height: 1.15;
 }
@@ -1998,8 +2043,8 @@ body > section {
 
 /* ── Parents card ── */
 .fam-card {
-  background-color: color-mix(in srgb, var(--color-purple-lightest) 15%, transparent);
-  border: 1px solid var(--color-purple-dark);
+  background-color: var(--color-purple-dark);
+  border: 1px solid var(--color-dark-gold);
   border-radius: 14px;
   padding: 1.8rem;
   display: flex;
@@ -2029,7 +2074,7 @@ body > section {
   color: var(--color-purple-dark);
   font-size: 2rem;
   overflow: hidden;
-  padding: 8px;
+  padding: 5px;
 }
 
 /* When a real <img> replaces the placeholder */
@@ -2041,11 +2086,11 @@ body > section {
 }
 
 .fam-photo-sm {
-  width: 52px;
-  height: 52px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   font-size: 1rem;
-  border: 2px solid var(--color-purple-dark);
+  border: 2px solid var(--color-gold);
   box-shadow: none;
 }
 
@@ -2086,7 +2131,7 @@ body > section {
 /* Bold name */
 .fam-card-name {
   font-size: clamp(1.55rem, 2.8vw, 34px);
-  color: var(--color-purple-dark);
+  color: var(--color-ivory);
   line-height: 1.25;
   margin: 0;
 }
@@ -2109,7 +2154,7 @@ body > section {
 .fam-detail-row dt {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-purple-medium);
+  color: var(--color-ivory);
   white-space: nowrap;
   text-wrap: pretty;
   width: 95px;
@@ -2117,7 +2162,7 @@ body > section {
 
 .fam-detail-row dd {
   font-size: 0.95rem;
-  color: var(--color-purple-light);
+  color: var(--color-ivory);
   line-height: 29px;
   margin: 0;
 }
@@ -2130,8 +2175,8 @@ body > section {
   font-size: 0.86rem;
   font-weight: 600;
   color: var(--color-purple-medium);
-  background-color:color-mix(in srgb, var(--color-purple-lightest) 30%, transparent) ;
-  border: 1px solid color-mix(in srgb, var(--color-purple-dark) 20%, transparent) ;
+  background-color:var(--color-ivory);
+  border: 1px solid var(--color-dark-gold);
   border-radius: 10px;
   padding: 0.4rem 0.85rem;
   width: fit-content;
@@ -2172,8 +2217,8 @@ body > section {
 }
 
 .fam-lineage-card {
-  background-color: color-mix(in srgb, var(--color-purple-lightest) 15%, transparent);
-  border: 1px solid var(--color-purple-dark);
+  background-color: var(--color-purple-dark);
+  border: 1px solid var(--color-dark-gold);
   border-radius: 10px;
   padding: 0.75rem 0.9rem;
   display: flex;
@@ -2197,35 +2242,35 @@ body > section {
 }
 
 .fam-lineage-spouse {
-  font-size: 0.95rem;
-  color: var(--color-purple-dark);
+  font-size: 16px;
+  color: var(--color-ivory);
   line-height: 1.3;
   margin: 0;
 }
 
 .fam-lineage-name {
-  font-size: 0.78rem;
-  color: var(--color-purple-dark);
+  font-size: 16px;
+  color: var(--color-ivory);
   margin: 0;
   line-height: 1.4;
 }
 
 .fam-lineage-origin {
-  font-size: 0.72rem;
-  color: var(--color-purple-dark);
+  font-size: 16px;
+  color: var(--color-ivory);
   margin: 0;
   margin-top: 0.15rem;
 }
 
 /* ── Sibling card ── */
 .fam-sibling-card {
-  background-color: color-mix(in srgb, var(--color-purple-lightest) 15%, transparent);
-  border: 1px solid var(--color-purple-dark);
+  background-color: var(--color-purple-dark);
+  border: 1px solid var(--color-dark-gold);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
   gap: 0.9rem;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .fam-sibling-body {
@@ -2243,8 +2288,8 @@ body > section {
 }
 
 .fam-sibling-name {
-  font-size: 1rem;
-  color: var(--color-purple-dark);
+  font-size: 20px;
+  color: var(--color-ivory);
   margin: 0;
   line-height: 1.3;
 }
@@ -2254,8 +2299,8 @@ body > section {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background-color: var(--color-purple-dark);
-  color: var(--color-ivory);
+  background-color: var(--color-ivory);
+  color: var(--color-purple-dark);
   padding: 0.18rem 0.6rem;
   border-radius: 10px;
   white-space: nowrap;
@@ -2266,19 +2311,19 @@ body > section {
 }
 
 .fam-sibling-detail {
-  font-size: 0.78rem;
-  color: var(--color-purple-light);
+  font-size: 16px;
+  color: var(--color-ivory);
   line-height: 1.5;
   margin: 0;
 }
 
-.fam-sibling-detail strong { color: var(--color-purple-medium); font-weight: 700; }
+.fam-sibling-detail strong {font-size: 17px;  color: var(--color-ivory); font-weight: 700; }
 
 .fam-sibling-note {
   font-size: 0.75rem;
   font-style: italic;
   padding: 5px 10px;
-  color: var(--color-purple-medium);
+  color: var(--color-purple-dark);
   background-color: var(--color-ivory);
   border: 1px solid var(--color-purple-dark);
   border-radius: 20px;
@@ -2409,7 +2454,7 @@ body > section:not(#hero-section) {
   }
 
   .venue-card {
-    grid-template-columns: minmax(360px, 480px) 1fr;
+    grid-template-columns: minmax(360px, 590px) 1fr;
     min-height: 560px;
   }
 
@@ -2839,6 +2884,13 @@ body > section:not(#hero-section) {
 
   .hero-blessing {
     font-size: 0.95rem;
+  }
+
+  .hero-logo {
+    width: clamp(96px, 27vw, 140px);
+    max-height: 18vh;
+    margin-bottom: 0.75rem;
+    border-radius: 14px;
   }
 
   .hero-subtitle {

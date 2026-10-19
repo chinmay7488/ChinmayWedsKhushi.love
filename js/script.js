@@ -40,14 +40,13 @@ function updateSidePresentation(translations) {
   const names = getNestedValue(translations, namesKey);
   if (coupleNames && typeof names === 'string') coupleNames.textContent = names;
 
-  const video = document.getElementById('bg-video');
-  const videoSource = document.getElementById('bg-video-source');
-  if (videoSource) {
-    const source = isKhushiSide ? './video2.mp4' : './assets/videos/invitation.mp4';
-    if (videoSource.getAttribute('src') !== source) {
-      videoSource.setAttribute('src', source);
-      video?.load();
-      video?.play().catch(() => {});
+  const backgroundImage = document.getElementById('hero-background-image');
+  if (backgroundImage) {
+    const source = isKhushiSide
+      ? './assets/Personal%20Photos/Invitation/bride%20side.png'
+      : './assets/Personal%20Photos/Invitation/Groom%20side.png';
+    if (backgroundImage.getAttribute('src') !== source) {
+      backgroundImage.setAttribute('src', source);
     }
   }
 }
@@ -553,7 +552,7 @@ async function setLanguage(lang) {
     });
 
     // Apply the selected side after translations so language changes keep the
-    // correct name order and video.
+    // correct name order and invitation image.
     updateSidePresentation(translations);
 
     // Update the main navigation switcher button text dynamically

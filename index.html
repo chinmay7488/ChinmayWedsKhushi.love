@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Ranga:wght@600;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <!-- Font Awesome for clock & calendar icons used in the timeline cards -->
   <link
@@ -106,21 +106,23 @@
     ============================================== -->
     <section id="hero-section" aria-labelledby="main-heading">
 
-      <video
-        id="bg-video"
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
+      <img
+        id="hero-background-image"
+        class="hero-background-image"
+        src="./assets/Personal%20Photos/Invitation/Groom%20side.png"
+        alt=""
         aria-hidden="true"
-      >
-        <source id="bg-video-source" src="./assets/videos/invitation.mp4" type="video/mp4" />
-      </video>
+      />
 
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-content">
+        <div class="card-container">
+        <div class="card-frame">
+          <!-- Replace 'your-image-path.png' with your actual image file -->
+          <img src="assets/images/Wedding%20logo_without_name.png" alt="Chinmay & Khushi Monogram" class="card-image" />
+        </div>
+      </div>
 
         <!-- Blessing line -->
         <p class="hero-blessing" data-i18n="hero.blessing">|| ॐ श्री महावीराय नमः || जैनम जयति शासनम् ||</p>
@@ -225,9 +227,9 @@
 
         <div class="couple-grid">
           <article class="couple-profile groom-profile">
-            <div class="profile-photo profile-photo-groom" aria-label="Portrait space for Chinmay Jain">
+            <div class="profile-photo profile-photo-groom">
+              <img class="profile-portrait" src="./assets/Personal%20Photos/chinmay.jpg" alt="Chinmay Jain">
               <span class="profile-badge" data-i18n="couple.groomBadge">✦ The Groom</span>
-              <div class="profile-monogram" aria-hidden="true">C</div>
               <div class="profile-photo-caption">
                 <span data-i18n="couple.groomCaption">With warmth &amp; devotion</span>
                 <h3 data-i18n="couple.groomName">Chinmay Jain</h3>
@@ -246,17 +248,17 @@
                 <dt><i class="fa-solid fa-house" aria-hidden="true"></i> <span data-i18n="couple.dtResidence">Residence</span></dt>
                 <dd data-i18n="couple.groomResidence">Bhopal, Madhya Pradesh</dd>
               </div>
+              <div>
+                <dt><i class="fa-solid fa-briefcase" aria-hidden="true"></i> <span data-i18n="couple.dtJob">Job</span></dt>
+                <dd data-i18n="couple.groomJob">Bhopal, Madhya Pradesh</dd>
+              </div>
             </dl>
-            <div class="profile-about">
-              <span data-i18n="couple.groomAboutTitle">✦ About Chinmay</span>
-              <p data-i18n="couple.groomAboutText">Grounded in family values and gratitude, Chinmay looks forward to beginning this new chapter surrounded by the love and blessings of those closest to him.</p>
-            </div>
           </article>
 
           <article class="couple-profile bride-profile">
-            <div class="profile-photo profile-photo-bride" aria-label="Portrait space for Khushi Jain">
+            <div class="profile-photo profile-photo-bride">
+              <img class="profile-portrait" src="./assets/Personal%20Photos/Khushi.jpeg" alt="Khushi Jain">
               <span class="profile-badge" data-i18n="couple.brideBadge">✦ The Bride</span>
-              <div class="profile-monogram" aria-hidden="true">K</div>
               <div class="profile-photo-caption">
                 <span data-i18n="couple.brideCaption">With grace &amp; joy</span>
                 <h3 data-i18n="couple.brideName">Khushi Jain</h3>
@@ -275,11 +277,12 @@
                 <dt><i class="fa-solid fa-house" aria-hidden="true"></i> <span data-i18n="couple.dtResidence">Residence</span></dt>
                 <dd data-i18n="couple.brideResidence">Firozabad, Uttar Pradesh</dd>
               </div>
+              <div>
+                <dt><i class="fa-solid fa-briefcase" aria-hidden="true"></i> <span data-i18n="couple.dtJob">Job</span></dt>
+                <dd data-i18n="couple.groomJob">Bhopal, Madhya Pradesh</dd>
+              </div>
             </dl>
-            <div class="profile-about">
-              <span data-i18n="couple.brideAboutTitle">✦ About Khushi</span>
-              <p data-i18n="couple.brideAboutText">With a joyful heart and a deep connection to her loved ones, Khushi warmly welcomes this cherished new beginning and the memories it will bring.</p>
-            </div>
+            
           </article>
         </div>
       </div>
@@ -541,7 +544,7 @@
           <div class="fam-card">
             <div class="fam-card-photo-wrap">
               <div class="fam-photo-placeholder" aria-label="Photo of Groom's parents">
-               <img src="./assets/images/mummy_papa.jpeg" alt="Groom's parents">
+               <img src="./assets/Personal Photos/mummy_papa.jpeg" alt="Groom's parents">
               </div>
               <span class="fam-photo-badge" data-i18n="families.parentsBadge">Parents</span>
             </div>
@@ -597,7 +600,7 @@
           <div class="fam-card">
             <div class="fam-card-photo-wrap">
               <div class="fam-photo-placeholder" aria-label="Photo of Bride's parents">
-                <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+               <img src="./assets/Personal Photos/mummyji_papaji.jpeg" alt="Bride's parents">
               </div>
               <span class="fam-photo-badge" data-i18n="families.parentsBadge">Parents</span>
             </div>
@@ -640,9 +643,9 @@
           <!-- Sisters -->
           <div class="fam-section-label" data-i18n="families.sisterTitle">Sister</div>
           <div class="fam-sibling-card">
-            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Mrs. Astha Jain">
-              <i class="fa-solid fa-user" aria-hidden="true"></i>
-            </div>
+            <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Aastha Jain">
+               <img src="./assets/Personal Photos/aastha.jpeg" alt="Aastha Jain">
+              </div>
             <div class="fam-sibling-body">
               <div class="fam-sibling-name-row">
                 <h4 class="fam-sibling-name" data-i18n="families.asthaName">Mrs. Astha Jain</h4>
@@ -656,8 +659,8 @@
 
           <div class="fam-sibling-card">
             <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Mrs. Paari Jain">
-              <i class="fa-solid fa-user" aria-hidden="true"></i>
-            </div>
+               <img src="./assets/Personal Photos/paari.jpeg" alt="Paari Jain">
+              </div>
             <div class="fam-sibling-body">
               <div class="fam-sibling-name-row">
                 <h4 class="fam-sibling-name" data-i18n="families.paariName">Mrs. Paari Jain</h4>
@@ -704,8 +707,8 @@
             <span data-i18n="venue.officialBadge">Official Wedding Banquet</span>
           </span>
 
-          <h3 class="venue-name" data-i18n="venue.name">Seasons 24 Banquets</h3>
-          <p class="venue-subtitle-tag" data-i18n="venue.subtitle">Grand Royal Ballroom Suite</p>
+          <h3 class="venue-name" data-i18n="venue.name">Janak Vatika</h3>
+          <p class="venue-subtitle-tag" data-i18n="venue.subtitle">Premium Marriage & Event Lawn</p>
 
           <ul class="venue-details-list">
             <li class="venue-detail-item">
@@ -713,25 +716,15 @@
                 <i class="fa-solid fa-location-dot"></i>
               </span>
               <div>
-                <strong data-i18n="venue.locationTitle">Location &amp; Floor</strong>
+                <strong data-i18n="venue.locationTitle">Location</strong>
                 <p data-i18n="venue.address">Hall No: 3, 4th Floor, Nagar Road, Wagholi, Pune,<br>Maharashtra – 412207</p>
                 <span class="venue-landmark" data-i18n="venue.landmark">Landmark: Next to Dhaval Shivtirth &amp; Skylights Apartment</span>
-              </div>
-            </li>
-            <li class="venue-detail-item">
-              <span class="venue-detail-icon" aria-hidden="true">
-                <i class="fa-regular fa-clock"></i>
-              </span>
-              <div>
-                <strong data-i18n="venue.scheduleTitle">Ceremony Schedule</strong>
-                <p><span data-i18n="venue.scheduleBaraat">Baraat Reception &amp; Foyer Drinks:</span> <strong class="venue-time">04:30 PM</strong></p>
-                <p><span data-i18n="venue.scheduleVarmala">Auspicious Varmala &amp; Muhurat:</span> <strong class="venue-time" data-i18n="venue.scheduleVarmalaTime">06:15 PM onwards</strong></p>
               </div>
             </li>
           </ul>
 
           <ul class="venue-amenities">
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityValet">Valet Parking Desk</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityValet">Ample Parking Space</span></li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityElevator">Dedicated Direct Elevators</span></li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityAC">Fully Air Conditioned</span></li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span data-i18n="venue.amenityFoyer">4th Floor Welcome Foyer</span></li>
@@ -774,16 +767,7 @@
               data-i18n="venue.viewFullscreen"
             >View Fullscreen ⛶</a>
           </div>
-          <iframe
-            title="Seasons 24 Banquets location on Google Maps"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.1452657924456!2d73.97564687596763!3d18.589510268618703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1234f4d1e0d%3A0xb6e3e07c6f92a1c5!2sSeasons%2024%20Banquets!5e0!3m2!1sen!2sin!4v1720000000000!5m2!1sen!2sin"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3549.680317394809!2d78.3654068!3d27.1663468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39744344c213954b%3A0xeafafa87f7623a8c!2sJanak%20Vatika%2C%20Marriage%20Home%20Humaunpur%2C%20Firozabad!5e0!3m2!1sen!2sin!4v1791619173230!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
 
       </div>
