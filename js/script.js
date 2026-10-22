@@ -40,7 +40,7 @@ function setHeroImage() {
   const image = document.getElementById('hero-background-image');
   if (!image) return;
 
-  const prefix = isKhushiSide ? 'hero-bride' : 'hero-groom';
+  const prefix = window.weddingHeroPrefix || (isKhushiSide ? 'hero-bride' : 'hero-groom');
   const candidates = [640, 1280, 1980]
     .map((width) => `./assets/optimized/${prefix}-${width}.webp ${width}w`)
     .join(', ');

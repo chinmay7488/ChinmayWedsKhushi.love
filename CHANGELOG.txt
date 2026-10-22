@@ -11,6 +11,7 @@ IMAGE DELIVERY
 
 PAGE LOADING
   - Deferred the main JavaScript file and combined Google Fonts into one request
+  - Preload the selected responsive hero image before stylesheets finish loading
   - Removed the unused Open Sans font request
   - Kept music and map media from preloading with the initial page
 
