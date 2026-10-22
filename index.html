@@ -184,27 +184,57 @@
           <div class="hcb-left">
             <p class="hcb-title" data-i18n="hero.hcbTitle">Auspicious Muhurat Countdown</p>
             <p class="hcb-subtitle" data-i18n="hero.hcbSubtitle">Sacred Hastamelap Ceremony</p>
+            <span class="hcb-stage2-kicker" id="countdown-stage2-kicker" hidden></span>
+            <p class="hcb-stage2-title" id="countdown-stage2-title" hidden></p>
+            <p class="hcb-stage2-subtitle" id="countdown-stage2-subtitle" hidden></p>
+            <p class="hcb-stage2-description" id="countdown-stage2-description" hidden></p>
+            <span class="hcb-stage2-kicker" id="countdown-stage3-kicker" hidden></span>
+            <p class="hcb-stage2-title" id="countdown-stage3-title" hidden></p>
+            <p class="hcb-stage2-subtitle" id="countdown-stage3-subtitle" hidden></p>
+            <p class="hcb-stage2-description" id="countdown-stage3-description" hidden></p>
+            <span class="hcb-stage2-kicker" id="countdown-complete-kicker" hidden></span>
+            <p class="hcb-stage2-title" id="countdown-complete-title" hidden></p>
+            <p class="hcb-stage2-subtitle" id="countdown-complete-subtitle" hidden></p>
+            <p class="hcb-stage2-description" id="countdown-complete-description" hidden></p>
+            <span class="hcb-stage2-kicker" id="countdown-stage5-kicker" hidden></span>
+            <p class="hcb-stage2-title" id="countdown-stage5-title" hidden></p>
+            <p class="hcb-stage2-subtitle" id="countdown-stage5-subtitle" hidden></p>
+            <p class="hcb-stage2-description" id="countdown-stage5-description" hidden></p>
+            <p class="hcb-stage-message" id="countdown-stage-message" aria-live="polite" hidden></p>
           </div>
 
           <div class="hcb-timer" id="hero-countdown" aria-live="polite">
-            <div class="hcb-unit">
-              <span class="hcb-num" id="cd-days">--</span>
-              <span class="hcb-lbl" data-i18n="hero.hcbDays">Days</span>
+            <p class="hcb-stage2-timer-caption" id="countdown-stage2-timer-caption" hidden>HASTAMELAP COUNTDOWN</p>
+            <p class="hcb-stage2-timer-caption" id="countdown-stage3-timer-caption" hidden>COUNTING DOWN TO 2:00 PM MUHURAT</p>
+            <div class="hcb-time-values">
+              <div class="hcb-unit">
+                <span class="hcb-num" id="cd-days">--</span>
+                <span class="hcb-lbl" data-i18n="hero.hcbDays">Days</span>
+              </div>
+              <span class="hcb-sep" aria-hidden="true"></span>
+              <div class="hcb-unit">
+                <span class="hcb-num" id="cd-hours">--</span>
+                <span class="hcb-lbl" data-i18n="hero.hcbHours">Hours</span>
+              </div>
+              <span class="hcb-sep" aria-hidden="true"></span>
+              <div class="hcb-unit">
+                <span class="hcb-num" id="cd-mins">--</span>
+                <span class="hcb-lbl" data-i18n="hero.hcbMinutes">Minutes</span>
+              </div>
+              <span class="hcb-sep" aria-hidden="true"></span>
+              <div class="hcb-unit">
+                <span class="hcb-num" id="cd-secs">--</span>
+                <span class="hcb-lbl" data-i18n="hero.hcbSeconds">Seconds</span>
+              </div>
             </div>
-            <span class="hcb-sep" aria-hidden="true"></span>
-            <div class="hcb-unit">
-              <span class="hcb-num" id="cd-hours">--</span>
-              <span class="hcb-lbl" data-i18n="hero.hcbHours">Hours</span>
-            </div>
-            <span class="hcb-sep" aria-hidden="true"></span>
-            <div class="hcb-unit">
-              <span class="hcb-num" id="cd-mins">--</span>
-              <span class="hcb-lbl" data-i18n="hero.hcbMinutes">Minutes</span>
-            </div>
-            <span class="hcb-sep" aria-hidden="true"></span>
-            <div class="hcb-unit">
-              <span class="hcb-num" id="cd-secs">--</span>
-              <span class="hcb-lbl" data-i18n="hero.hcbSeconds">Seconds</span>
+          </div>
+
+          <div class="hcb-stage-right">
+            <div class="hcb-married-card" id="hcb-married-card" hidden>
+              <span class="hcb-married-heart" aria-hidden="true">♥</span>
+              <strong>Mr. &amp; Mrs.</strong>
+              <span>Chinmay &amp; Khushi</span>
+              <small>5 December 2026</small>
             </div>
           </div>
 
@@ -250,7 +280,7 @@
               </div>
               <div>
                 <dt><i class="fa-solid fa-briefcase" aria-hidden="true"></i> <span data-i18n="couple.dtJob">Job</span></dt>
-                <dd data-i18n="couple.groomJob">Bhopal, Madhya Pradesh</dd>
+                <dd data-i18n="couple.groomJob">Software Developer in Tweaking Technologies, Jaipur</dd>
               </div>
             </dl>
           </article>
@@ -279,7 +309,7 @@
               </div>
               <div>
                 <dt><i class="fa-solid fa-briefcase" aria-hidden="true"></i> <span data-i18n="couple.dtJob">Job</span></dt>
-                <dd data-i18n="couple.groomJob">Bhopal, Madhya Pradesh</dd>
+                <dd data-i18n="couple.brideJob">Senior Merchandiser in Export House</dd>
               </div>
             </dl>
             
@@ -315,7 +345,7 @@
         aria-selected="true"
         data-tab="all"
         aria-controls="day-1-panel day-2-panel"
-      ><span data-i18n="events.tabAll">All Celebrations</span> <span class="tab-count">8</span></button>
+      ><span data-i18n="events.tabAll">All Celebrations</span> <span class="tab-count">7</span></button>
 
       <button
         class="tab-btn"
@@ -439,22 +469,6 @@
       </div>
 
       <div class="timeline-grid">
-
-        <!-- Card: Vidhan -->
-        <div class="event-card">
-          <div class="image-container">
-            <img src="./assets/images/vidhan.png" alt="Vidhan" class="event-image">
-            <span class="event-cat-badge" data-i18n="events.vidhanBadge">Vidhan</span>
-          </div>
-          <div class="card-content">
-            <h3 class="event-title" data-i18n="events.vidhanTitle">The Divine Prologue</h3>
-            <div class="event-time">
-              <i class="fa-regular fa-clock icon-clock"></i>
-              <span>9:30 AM</span>
-            </div>
-            <p class="event-subtitle" data-i18n="events.vidhanDesc">Sacred Vedic rituals performed to seek divine blessings for the union.</p>
-          </div>
-        </div>
 
         <!-- Card: Baarat -->
         <div class="event-card">

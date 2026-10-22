@@ -506,7 +506,7 @@ body > section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   background-color: #1e0b08;
 }
 
@@ -572,33 +572,44 @@ body > section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 0;
+  margin-bottom: 0.45rem;
 }
 
-/* Outer Card Frame matching the image design */
+/* Circular gold medallion frame for the existing wedding logo. */
 .card-frame {
+  --medallion-size: clamp(112px, 10vw, 152px);
   position: relative;
-  width: 100%;
-  max-width: 380px;          /* Adjust width as needed */
-  background-color: var(--color-purple-lightest); /* Soft off-white inner background */
-  border-radius: 28px;        /* Smooth rounded corners */
-  
-  /* Double border effect using padding and solid borders */
-  border: 3px solid var(--color-gold);  /* Outer metallic gold border */
-  padding: 8px;               /* Inner gap creating the double-line effect */
-  outline: 2px solid var(--color-gold); /* Accent border tone */
-  
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Subtle drop shadow */
+  width: var(--medallion-size);
+  aspect-ratio: 1;
+  background-color: var(--color-ivory);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 5px 18px rgba(10, 4, 2, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.75);
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.card-frame::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 10px;
+  height: 10px;
+  background: var(--color-gold);
+  border: 1px solid var(--color-ivory);
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 1;
 }
 
 /* Inner Image Styling */
 .card-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  border-radius: 20px;        /* Matches inner curve */
+  border-radius: 50%;
   object-fit: cover;
 }
 
@@ -792,11 +803,11 @@ body > section {
 .hero-countdown-bar-inner {
   max-width: 1100px;
   margin-inline: auto;
-  padding: 1.1rem 2rem;
+  padding: 1.1rem 1.25rem 1.1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: clamp(2.5rem, 5vw, 4rem);
 }
 
 /* Left label */
@@ -805,6 +816,15 @@ body > section {
   flex-direction: column;
   gap: 2px;
 }
+
+.hcb-left.hcb-started-message {
+  flex: 1 1 100%;
+  max-width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.hcb-left.hcb-started-message .hcb-stage2-description { max-width: 42rem; }
 
 .hcb-title {
   font-size: 1rem;
@@ -821,12 +841,139 @@ body > section {
   color: var(--color-ivory);
 }
 
+.hcb-stage2-kicker {
+  width: fit-content;
+  margin-bottom: 0.35rem;
+  padding: 0.16rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 55%, transparent);
+  border-radius: 999px;
+  color: var(--color-gold);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.hcb-stage2-title {
+  margin: 0 0 0.25rem;
+  color: var(--color-gold);
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+}
+
+.hcb-stage2-subtitle {
+  margin: 0 0 0.55rem;
+  color: var(--color-ivory);
+  font-family: var(--font-subheading);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.hcb-stage2-description {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--color-ivory);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.hcb-stage2-kicker[hidden],
+.hcb-stage2-title[hidden],
+.hcb-stage2-subtitle[hidden],
+.hcb-stage2-description[hidden] { display: none; }
+
+.hcb-stage-message {
+  max-width: 34rem;
+  margin: 0.35rem 0 0;
+  color: var(--color-ivory);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 700;
+}
+
 /* Timer units */
 .hcb-timer {
   display: flex;
+  margin-left: auto;
   align-items: center;
   gap: 1.5rem;
 }
+
+.hcb-time-values { display: flex; align-items: center; gap: 1.5rem; }
+.hcb-timer.hcb-stage2-timer {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+}
+.hcb-stage2-timer-caption {
+  margin: 0;
+  color: var(--color-gold);
+  font-size: 0.58rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+.hcb-stage2-timer-caption[hidden] { display: none; }
+.hcb-stage2-timer .hcb-time-values {
+  gap: 1.45rem;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 24%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--color-purple-dark) 48%, transparent);
+}
+.hcb-stage2-timer .hcb-sep { display: none; }
+
+@media (max-width: 640px) {
+  .hcb-timer.hcb-stage2-timer { align-items: stretch; justify-content: flex-start; }
+  .hcb-stage2-timer .hcb-time-values {
+    justify-content: space-around;
+    gap: 0.4rem;
+    padding: 0.65rem 0.5rem;
+  }
+}
+
+.hcb-timer[hidden],
+.hcb-married-card[hidden],
+.hcb-stage-message[hidden] { display: none; }
+
+.hcb-married-card {
+  width: 11.5rem;
+  min-height: 9rem;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.28rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--color-purple-dark) 55%, transparent);
+  color: var(--color-ivory);
+  text-align: center;
+}
+
+.hcb-stage-right {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.hcb-married-heart {
+  width: 2.7rem;
+  height: 2.7rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.15rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 70%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-purple-medium) 35%, transparent);
+  color: var(--color-gold);
+  font-size: 1.2rem;
+}
+.hcb-married-card strong { color: var(--color-gold); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.hcb-married-card > span:not(.hcb-married-heart) { font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; }
+.hcb-married-card small { color: var(--color-ivory); font-size: 0.58rem; }
 
 .hcb-unit {
   display: flex;
@@ -952,7 +1099,7 @@ body > section {
 
 .profile-photo {
   position: relative;
-  min-height: 385px;
+  height: 400px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -968,8 +1115,12 @@ body > section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* Adjust these per profile to reframe the photo without resizing its box. */
+  object-position: var(--profile-image-position, center);
 }
+
+.profile-photo-groom { --profile-image-position: center 10%; }
+.profile-photo-bride { --profile-image-position: center 20%; }
 
 .profile-photo::before,
 .profile-photo::after {
@@ -2414,7 +2565,7 @@ body > section:not(#hero-section) {
 
   .hero-countdown-bar-inner {
     max-width: 1400px;
-    padding: 1.4rem 3rem;
+    padding: 1.4rem 2.25rem 1.4rem 3rem;
   }
 
   .hcb-num {
@@ -2486,7 +2637,7 @@ body > section:not(#hero-section) {
 
   .hero-countdown-bar-inner {
     max-width: 1700px;
-    padding: 1.6rem 4rem;
+    padding: 1.6rem 3.25rem 1.6rem 4rem;
   }
 
   .hcb-num {
@@ -2833,7 +2984,7 @@ body > section:not(#hero-section) {
   }
 
   .profile-photo {
-    min-height: 330px;
+    height: 330px;
   }
 
   .profile-monogram {

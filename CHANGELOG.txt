@@ -1,6 +1,20 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-22] - Countdown Stages, Couple Details & Celebration Content
+---------------------------------------------------------------------
+
+COUNTDOWN & CELEBRATION STATES
+  - Added real-time countdown stages for the celebration day, wedding day, Hastamelap start and completion, and post-wedding period
+  - Added URL-based stage previews for testing while keeping the live clock as the default
+  - Added stage-specific celebration messages, countdown presentation, and the Mr. & Mrs. card
+  - Adjusted the countdown layout and image positioning for the couple profiles
+
+COUPLE, FAMILY & ITINERARY CONTENT
+  - Updated the couple's education and job details and refreshed family lineage details in English and Hindi
+  - Renamed the second-day celebration and adjusted the event list and count
+  - Updated the groom portrait asset
+
 [2026-10-19] — Personal Photos, Invitation Artwork & Venue Update
 -----------------------------------------------------------------
 

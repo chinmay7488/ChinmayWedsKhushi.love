@@ -171,85 +171,118 @@ function initScrollAnimations() {
 /* =============================================
    4. COUNTDOWN TIMER
 ============================================== */
+// Staged wedding countdown. URL test values: ?countdownTest=stage1, stage2,
+// stage3, stage4start, stage4complete, or stage5. Remove the query to use real time.
 function initCountdown() {
-  const container = $('#hero-countdown');
-
-  // Wedding date — update to match the actual date/time (IST = UTC+5:30)
-  const WEDDING_DATE = new Date('2026-12-05T09:30:00+05:30');
-
-  // Banner timer elements
-  const cbtDays  = $('#cbt-days');
-  const cbtHours = $('#cbt-hours');
-  const cbtMins  = $('#cbt-mins');
-  const cbtSecs  = $('#cbt-secs');
-
-  // Nav mini-countdown elements
-  const navDays  = $('#nav-cd-days');
-  const navHrs   = $('#nav-cd-hrs');
-  const navMins  = $('#nav-cd-mins');
-  const navSecs  = $('#nav-cd-secs');
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  function render() {
-    const now  = new Date();
-    const diff = WEDDING_DATE - now;
-
-    if (diff <= 0) {
-      // Hero countdown bar
-      const dEl = $('#cd-days');
-      const hEl = $('#cd-hours');
-      const mEl = $('#cd-mins');
-      const sEl = $('#cd-secs');
-      if (dEl) dEl.textContent = '00';
-      if (hEl) hEl.textContent = '00';
-      if (mEl) mEl.textContent = '00';
-      if (sEl) sEl.textContent = '00';
-      // Banner countdown
-      if (cbtDays)  cbtDays.textContent  = '00';
-      if (cbtHours) cbtHours.textContent = '00';
-      if (cbtMins)  cbtMins.textContent  = '00';
-      if (cbtSecs)  cbtSecs.textContent  = '00';
-      // Nav countdown
-      if (navDays)  navDays.textContent  = '00';
-      if (navHrs)   navHrs.textContent   = '00';
-      if (navMins)  navMins.textContent  = '00';
-      if (navSecs)  navSecs.textContent  = '00';
-      return;
+  const originalCountdownTarget = new Date('2026-12-05T09:30:00+05:30');
+  const start = new Date('2026-12-05T14:00:00+05:30');
+  const celebration = new Date('2026-12-04T00:00:00+05:30');
+  const dayTwo = new Date('2026-12-05T00:00:00+05:30');
+  const end = new Date('2026-12-05T18:00:00+05:30');
+  const nextDay = new Date('2026-12-06T00:00:00+05:30');
+  const testDates = {
+    stage1: '2026-12-03T12:00:00+05:30', stage2: '2026-12-04T12:00:00+05:30',
+    stage3: '2026-12-05T13:00:00+05:30', stage4start: '2026-12-05T15:00:00+05:30',
+    stage4complete: '2026-12-05T19:00:00+05:30', stage5: '2026-12-06T12:00:00+05:30'
+  };
+  const test = new URLSearchParams(location.search).get('countdownTest');
+  const message = $('#countdown-stage-message');
+  const defaultTitle = $('.hcb-title');
+  const defaultSubtitle = $('.hcb-subtitle');
+  const stage2Kicker = $('#countdown-stage2-kicker');
+  const stage2Title = $('#countdown-stage2-title');
+  const stage2Subtitle = $('#countdown-stage2-subtitle');
+  const stage2Description = $('#countdown-stage2-description');
+  const stage3Kicker = $('#countdown-stage3-kicker');
+  const stage3Title = $('#countdown-stage3-title');
+  const stage3Subtitle = $('#countdown-stage3-subtitle');
+  const stage3Description = $('#countdown-stage3-description');
+  const completeKicker = $('#countdown-complete-kicker');
+  const completeTitle = $('#countdown-complete-title');
+  const completeSubtitle = $('#countdown-complete-subtitle');
+  const completeDescription = $('#countdown-complete-description');
+  const stage5Kicker = $('#countdown-stage5-kicker');
+  const stage5Title = $('#countdown-stage5-title');
+  const stage5Subtitle = $('#countdown-stage5-subtitle');
+  const stage5Description = $('#countdown-stage5-description');
+  const timer = $('#hero-countdown');
+  const stage2TimerCaption = $('#countdown-stage2-timer-caption');
+  const stage3TimerCaption = $('#countdown-stage3-timer-caption');
+  const married = $('#hcb-married-card');
+  const nav = ['nav-cd-days', 'nav-cd-hrs', 'nav-cd-mins', 'nav-cd-secs'].map(id => document.getElementById(id));
+  const banner = ['cbt-days', 'cbt-hours', 'cbt-mins', 'cbt-secs'].map(id => document.getElementById(id));
+  const hero = ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].map(id => document.getElementById(id));
+  const pad = value => String(value).padStart(2, '0');
+  const update = () => {
+    // Test dates are opt-in; all normal and unrecognized URLs use the live clock.
+    const isTestMode = Object.prototype.hasOwnProperty.call(testDates, test);
+    const now = isTestMode ? new Date(testDates[test]) : new Date();
+    let stage = now < celebration ? 1 : now < dayTwo ? 2 : now < start ? 3 : now < end ? 4 : now < nextDay ? 'completed' : 5;
+    const labels = {
+      3: 'The auspicious moment is near! Our forever begins today.',
+      4: 'Hastamelap started',
+      completed: 'Hastamelap completed — We’re married!',
+      5: 'Our forever has begun — a new chapter, a lifetime of love.'
+    };
+    const isStage2 = stage === 2;
+    const isStage3 = stage === 3;
+    const isStarted = stage === 4;
+    const isComplete = stage === 'completed';
+    const isStage5 = stage === 5;
+    const isMessageStage = isStage2 || isStage3 || isStarted || isComplete || isStage5;
+    if (defaultTitle) defaultTitle.hidden = isMessageStage;
+    if (defaultSubtitle) defaultSubtitle.hidden = isMessageStage;
+    if (stage2Kicker) { stage2Kicker.hidden = !isStage2; stage2Kicker.textContent = 'DAY 1 CELEBRATIONS IN PROGRESS'; }
+    if (stage2Title) { stage2Title.hidden = !isStage2; stage2Title.textContent = 'THE CELEBRATIONS HAVE BEGUN!'; }
+    if (stage2Subtitle) { stage2Subtitle.hidden = !isStage2; stage2Subtitle.textContent = 'A beautiful beginning to our forever.'; }
+    if (stage2Description) {
+      stage2Description.hidden = !isStage2;
+      stage2Description.textContent = 'The festivities are here, hearts are full, and beautiful memories are being made. Tomorrow, we unite in the sacred Hastamelap ceremony as we begin our forever together.';
     }
-
-    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    // ── Hero/bar countdown (pre-built elements in HTML) ──
-    if (container) {
-      const dEl = $('#cd-days');
-      const hEl = $('#cd-hours');
-      const mEl = $('#cd-mins');
-      const sEl = $('#cd-secs');
-      if (dEl) dEl.textContent = days;
-      if (hEl) hEl.textContent = pad(hours);
-      if (mEl) mEl.textContent = pad(minutes);
-      if (sEl) sEl.textContent = pad(seconds);
+    if (stage3Kicker) { stage3Kicker.hidden = !isStage3; stage3Kicker.textContent = 'SACRED WEDDING DAY · 5 DECEMBER 2026'; }
+    if (stage3Title) { stage3Title.hidden = !isStage3; stage3Title.textContent = 'THE AUSPICIOUS MOMENT IS NEAR!'; }
+    if (stage3Subtitle) { stage3Subtitle.hidden = !isStage3; stage3Subtitle.textContent = 'OUR FOREVER BEGINS TODAY'; }
+    if (stage3Description) {
+      stage3Description.hidden = !isStage3;
+      stage3Description.textContent = 'Two hearts, two families, and one beautiful journey. The wait is almost over as we prepare to unite in the sacred Hastamelap ceremony.';
     }
+    if (completeKicker) {
+      completeKicker.hidden = !isStarted && !isComplete;
+      completeKicker.textContent = isStarted ? 'SHUBHA VIVAHA · HASTAMELAP STARTED' : 'SHUBHA VIVAHA · HASTAMELAP COMPLETE';
+    }
+    if (completeTitle) {
+      completeTitle.hidden = !isStarted && !isComplete;
+      completeTitle.textContent = isStarted ? 'WE’RE GETTING MARRIED!' : 'WE’RE MARRIED!';
+    }
+    if (completeSubtitle) { completeSubtitle.hidden = !isStarted && !isComplete; completeSubtitle.textContent = 'TODAY, TWO HEARTS BECOME ONE'; }
+    if (completeDescription) {
+      completeDescription.hidden = !isStarted && !isComplete;
+      completeDescription.textContent = 'Our forever has officially begun. With hearts full of love and gratitude, we begin this beautiful new chapter together. Thank you for being part of our journey and showering us with your love and blessings.';
+    }
+    if (stage5Kicker) { stage5Kicker.hidden = !isStage5; stage5Kicker.textContent = 'GRATITUDE & FOREVER MEMORIES'; }
+    if (stage5Title) { stage5Title.hidden = !isStage5; stage5Title.textContent = 'OUR FOREVER HAS BEGUN'; }
+    if (stage5Subtitle) { stage5Subtitle.hidden = !isStage5; stage5Subtitle.textContent = 'A NEW CHAPTER, A LIFETIME OF LOVE'; }
+    if (stage5Description) {
+      stage5Description.hidden = !isStage5;
+      stage5Description.textContent = 'The celebrations may be over, but our story is only just beginning. Thank you for being part of our special journey. Your love, blessings, and good wishes will always hold a special place in our hearts.';
+    }
+    if (timer) timer.classList.toggle('hcb-stage2-timer', isMessageStage);
+    const messageIsCentered = isStarted;
+    const leftContent = $('.hcb-left');
+    if (leftContent) leftContent.classList.toggle('hcb-started-message', messageIsCentered);
+    if (stage2TimerCaption) stage2TimerCaption.hidden = !isStage2;
+    if (stage3TimerCaption) stage3TimerCaption.hidden = !isStage3;
+    if (message) { message.hidden = stage === 1 || isMessageStage; message.textContent = labels[stage] || ''; }
+    if (timer) timer.hidden = stage === 4 || stage === 'completed' || stage === 5;
+    if (married) married.hidden = stage !== 'completed' && stage !== 5;
 
-    // ── Banner countdown ──
-    if (cbtDays)  cbtDays.textContent  = days;
-    if (cbtHours) cbtHours.textContent = pad(hours);
-    if (cbtMins)  cbtMins.textContent  = pad(minutes);
-    if (cbtSecs)  cbtSecs.textContent  = pad(seconds);
-
-    // ── Nav mini countdown ──
-    if (navDays)  navDays.textContent  = days;
-    if (navHrs)   navHrs.textContent   = pad(hours);
-    if (navMins)  navMins.textContent  = pad(minutes);
-    if (navSecs)  navSecs.textContent  = pad(seconds);
-  }
-
-  render();
-  setInterval(render, 1000);
+    const target = stage === 1 ? originalCountdownTarget : start;
+    const diff = Math.max(0, target - now);
+    const values = [Math.floor(diff / 86400000), pad(Math.floor(diff / 3600000) % 24), pad(Math.floor(diff / 60000) % 60), pad(Math.floor(diff / 1000) % 60)];
+    [hero, banner, nav].forEach(group => group.forEach((el, i) => { if (el) el.textContent = values[i]; }));
+  };
+  update();
+  setInterval(update, 1000);
 }
 
 
@@ -403,12 +436,16 @@ function initTimelineTabs() {
 ============================================== */
 function initMomentsCarousel() {
   const viewport = $('#moments-viewport');
+  // This carousel is optional on pages/variants that do not include it.
+  // Guard before using viewport as the context for querySelectorAll.
+  if (!viewport) return;
+
   const previous = $('.moments-prev');
   const next = $('.moments-next');
   const cards = $$('.moment-card', viewport);
   const dots = $$('.moments-dots button');
 
-  if (!viewport || !previous || !next || !cards.length || !dots.length) return;
+  if (!previous || !next || !cards.length || !dots.length) return;
 
   function cardStep() {
     return cards.length > 1
