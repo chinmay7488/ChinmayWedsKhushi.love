@@ -923,6 +923,92 @@ body > section {
 }
 .hcb-stage2-timer .hcb-sep { display: none; }
 
+
+/* Floating wedding music control */
+.music-widget {
+  position: fixed;
+  right: max(1.2rem, env(safe-area-inset-right));
+  bottom: max(1.2rem, env(safe-area-inset-bottom));
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+}
+
+.music-toggle {
+  width: clamp(4.25rem, 7vw, 5.25rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--color-gold);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-purple-dark) 86%, transparent);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.42), inset 0 0 0 2px color-mix(in srgb, var(--color-ivory) 24%, transparent);
+  color: var(--color-gold);
+  cursor: pointer;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.music-toggle:hover { transform: scale(1.05); }
+.music-toggle:focus-visible { outline: 3px solid var(--color-ivory); outline-offset: 4px; }
+.music-toggle.is-playing { background: color-mix(in srgb, var(--color-purple-dark) 72%, var(--color-purple-medium)); }
+.music-toggle.needs-activation {
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-gold) 25%, transparent), 0 0 24px color-mix(in srgb, var(--color-gold) 75%, transparent);
+  animation: music-button-pulse 1.8s ease-in-out infinite;
+}
+
+.music-icon { width: 58%; height: 58%; overflow: visible; }
+.music-speaker { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.music-wave, .music-mute-x { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
+.music-wave { display: none; }
+.music-toggle.is-playing .music-wave { display: block; }
+.music-toggle.is-playing .music-mute-x { display: none; }
+.music-toggle.is-muted .music-mute-x { display: block; }
+.music-toggle.is-muted .music-wave { display: none; }
+
+.music-tooltip {
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  top: 50%;
+  width: max-content;
+  max-width: min(17rem, 65vw);
+  padding: 0.6rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 65%, transparent);
+  border-radius: 0.45rem;
+  background: var(--color-purple-dark);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.28);
+  color: var(--color-ivory);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  transform: translateY(-50%);
+}
+
+.music-tooltip[hidden] { display: none; }
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@keyframes music-button-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-gold) 20%, transparent), 0 0 16px color-mix(in srgb, var(--color-gold) 55%, transparent); }
+  50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--color-gold) 32%, transparent), 0 0 27px color-mix(in srgb, var(--color-gold) 82%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle { transition: none; }
+  .music-toggle.needs-activation { animation: none; }
+}
+
 @media (max-width: 640px) {
   .hcb-timer.hcb-stage2-timer { align-items: stretch; justify-content: flex-start; }
   .hcb-stage2-timer .hcb-time-values {

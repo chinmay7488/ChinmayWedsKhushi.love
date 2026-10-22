@@ -1,6 +1,15 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-22] - Wedding Music Player
+-----------------------------------
+
+MUSIC PLAYER
+  - Added the Kudmayi instrumental track with a floating play/pause control
+  - Added an autoplay attempt with a highlighted prompt when browser playback is blocked
+  - Paused music when the page is hidden and resumed it when the wedding page becomes active again
+  - Added a configurable player volume in js/script.js and English/Hindi player labels
+
 [2026-10-22] - Bilingual Countdown Messages
 -------------------------------------------
 

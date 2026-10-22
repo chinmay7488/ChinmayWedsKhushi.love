@@ -795,6 +795,19 @@
     <p class="footer-line" data-i18n="footer.line">The Beginning of Forever: Chinmay &amp; Khushi &nbsp;·&nbsp; 2026</p>
   </footer>
 
+  <div class="music-widget" id="music-widget">
+    <audio id="wedding-audio" loop preload="none"></audio>
+    <button class="music-toggle" id="music-toggle" type="button" aria-label="Turn wedding music on" aria-pressed="false" aria-describedby="music-status">
+      <svg class="music-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+        <path class="music-speaker" d="M8 19h8l11-9v28l-11-9H8z" />
+        <path class="music-wave" d="M32 17c3 2 5 4.5 5 7s-2 5-5 7" />
+        <path class="music-mute-x" d="m32 19 7 8m0-8-7 8" />
+      </svg>
+    </button>
+    <span class="music-tooltip" id="music-tooltip" role="status" hidden></span>
+    <span class="visually-hidden" id="music-status" aria-live="polite"></span>
+  </div>
+
   <script src="js/script.js"></script>
 </body>
 </html>

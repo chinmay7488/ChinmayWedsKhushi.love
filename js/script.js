@@ -33,6 +33,7 @@ const $$ = (selector, ctx = document) => Array.from(ctx.querySelectorAll(selecto
 /* Language state is shared by the modal and navbar switcher. */
 let currentLanguage = 'en';
 let activeTranslations = null;
+let refreshMusicPlayerLanguage = null;
 const isKhushiSide = new URLSearchParams(window.location.search).get('side') === 'khushi';
 
 function updateSidePresentation(translations) {
@@ -292,6 +293,134 @@ function initCountdown() {
   };
   update();
   setInterval(update, 1000);
+}
+
+
+/* =============================================
+   WEDDING MUSIC PLAYER
+============================================== */
+function initMusicPlayer() {
+  // Keep this path relative so the player works from the project root.
+  const MUSIC_AUDIO_SOURCE = './assets/audio/Kudmayi.mp3';
+  const MUSIC_VOLUME = 0.5; // Set between 0 (silent) and 1 (full volume).
+  const audio = $('#wedding-audio');
+  const button = $('#music-toggle');
+  const tooltip = $('#music-tooltip');
+  const status = $('#music-status');
+  if (!audio || !button) return;
+
+  // The player needs the source assigned before play() can load the track.
+  audio.src = MUSIC_AUDIO_SOURCE;
+  audio.volume = MUSIC_VOLUME;
+
+  let hintKey = null;
+  let statusKey = 'paused';
+  let resumeOnReturn = false;
+  let manuallyPaused = false;
+  const text = (key, fallback) => {
+    const value = activeTranslations && activeTranslations.music && activeTranslations.music[key];
+    return typeof value === 'string' ? value : fallback;
+  };
+
+  function render() {
+    const playing = !audio.paused && !audio.ended;
+    button.classList.toggle('is-playing', playing);
+    button.classList.toggle('is-muted', audio.volume === 0);
+    button.classList.toggle('needs-activation', Boolean(hintKey));
+    button.setAttribute('aria-pressed', String(playing));
+    button.setAttribute('aria-label', playing
+      ? text('pauseLabel', 'Pause wedding music')
+      : text('playLabel', 'Play wedding music'));
+    if (tooltip) {
+      tooltip.hidden = !hintKey;
+      tooltip.textContent = hintKey === 'unavailable'
+        ? text('unavailable', 'The wedding music file is not available yet.')
+        : text('tapPrompt', 'Tap the music button to enable wedding music.');
+    }
+    if (status) {
+      status.textContent = hintKey
+        ? (hintKey === 'unavailable'
+          ? text('unavailable', 'The wedding music file is not available yet.')
+          : text('tapPrompt', 'Tap the music button to enable wedding music.'))
+        : playing
+          ? text('playing', 'Wedding music is playing.')
+          : text(statusKey, 'Wedding music is paused.');
+    }
+  }
+
+  async function tryPlay() {
+    if (document.hidden) return;
+    if (!MUSIC_AUDIO_SOURCE) {
+      hintKey = 'unavailable';
+      render();
+      return;
+    }
+    try {
+      await audio.play();
+      hintKey = null;
+      statusKey = 'playing';
+      render();
+    } catch (error) {
+      hintKey = error && error.name === 'NotAllowedError' ? 'tapPrompt' : 'unavailable';
+      render();
+    }
+  }
+
+  button.addEventListener('click', () => {
+    if (!audio.paused && !audio.ended) {
+      manuallyPaused = true;
+      resumeOnReturn = false;
+      audio.pause();
+      hintKey = null;
+      statusKey = 'paused';
+      render();
+    } else {
+      manuallyPaused = false;
+      void tryPlay();
+    }
+  });
+  function pausePlayback() {
+    if (!audio.paused) audio.pause();
+    hintKey = null;
+    statusKey = 'paused';
+    render();
+  }
+  function pauseForPageHide() {
+    if (!audio.paused && !audio.ended && !manuallyPaused) resumeOnReturn = true;
+    pausePlayback();
+  }
+  function resumeIfNeeded() {
+    if (!document.hidden && resumeOnReturn && !manuallyPaused) {
+      resumeOnReturn = false;
+      void tryPlay();
+    }
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) pauseForPageHide();
+    else resumeIfNeeded();
+  });
+  window.addEventListener('pagehide', pauseForPageHide);
+  window.addEventListener('pageshow', resumeIfNeeded);
+  audio.addEventListener('play', () => {
+    if (document.hidden) {
+      if (!manuallyPaused) resumeOnReturn = true;
+      audio.pause();
+      return;
+    }
+    manuallyPaused = false;
+    hintKey = null;
+    statusKey = 'playing';
+    render();
+  });
+  audio.addEventListener('pause', () => {
+    if (document.hidden && !manuallyPaused && statusKey === 'playing') resumeOnReturn = true;
+    render();
+  });
+  audio.addEventListener('error', () => { hintKey = 'unavailable'; render(); });
+  refreshMusicPlayerLanguage = render;
+
+  // Try audible autoplay on every visit. Browsers that block it leave the button highlighted.
+  void tryPlay();
 }
 
 
@@ -561,6 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initScrollAnimations();
   initCountdown();
+  initMusicPlayer();
   initGallery();
   initTimelineTabs();
   initMomentsCarousel();
@@ -597,6 +727,7 @@ async function setLanguage(lang) {
       const value = getNestedValue(translations, key);
       if (typeof value === 'string') el.textContent = value;
     });
+    refreshMusicPlayerLanguage?.();
 
     // Apply the selected side after translations so language changes keep the
     // correct name order and invitation image.

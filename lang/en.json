@@ -62,6 +62,14 @@
     "marriedNames": "Chinmay & Khushi",
     "marriedDate": "5 December 2026"
   },
+  "music": {
+    "playLabel": "Play wedding music",
+    "pauseLabel": "Pause wedding music",
+    "tapPrompt": "Tap the music button to enable wedding music.",
+    "unavailable": "The wedding music file is not available yet.",
+    "playing": "Wedding music is playing.",
+    "paused": "Wedding music is paused."
+  },
   "couple": {
     "eyebrow": "Meet the Couple",
     "heading": "Two Hearts, One Sacred Journey",
