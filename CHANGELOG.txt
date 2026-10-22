@@ -1,6 +1,14 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-22] - Bilingual Countdown Messages
+-------------------------------------------
+
+LANGUAGE SUPPORT
+  - Added Hindi translations for countdown messages across all stages, timer captions, and the Mr. & Mrs. card
+  - Connected live countdown content to the selected English or Hindi language
+  - Kept real-time operation as the default and retained URL-based stage previews
+
 [2026-10-22] - Countdown Stages, Couple Details & Celebration Content
 ---------------------------------------------------------------------
 
