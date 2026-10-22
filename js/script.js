@@ -36,21 +36,27 @@ let activeTranslations = null;
 let refreshMusicPlayerLanguage = null;
 const isKhushiSide = new URLSearchParams(window.location.search).get('side') === 'khushi';
 
+function setHeroImage() {
+  const image = document.getElementById('hero-background-image');
+  if (!image) return;
+
+  const prefix = isKhushiSide ? 'hero-bride' : 'hero-groom';
+  const candidates = [640, 1280, 1980]
+    .map((width) => `./assets/optimized/${prefix}-${width}.webp ${width}w`)
+    .join(', ');
+  image.sizes = '100vw';
+  image.srcset = candidates;
+  image.src = `./assets/optimized/${prefix}-1980.webp`;
+}
+
+// The HTML leaves the hero image URL unset so only the requested side is fetched.
+setHeroImage();
+
 function updateSidePresentation(translations) {
   const coupleNames = document.getElementById('couple-names');
   const namesKey = isKhushiSide ? 'hero.namesCoupleKhushi' : 'hero.namesCouple';
   const names = getNestedValue(translations, namesKey);
   if (coupleNames && typeof names === 'string') coupleNames.textContent = names;
-
-  const backgroundImage = document.getElementById('hero-background-image');
-  if (backgroundImage) {
-    const source = isKhushiSide
-      ? './assets/Personal%20Photos/Invitation/bride%20side.png'
-      : './assets/Personal%20Photos/Invitation/Groom%20side.png';
-    if (backgroundImage.getAttribute('src') !== source) {
-      backgroundImage.setAttribute('src', source);
-    }
-  }
 }
 
 

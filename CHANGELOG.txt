@@ -1,6 +1,19 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-22] - Static Asset Performance
+---------------------------------------
+
+IMAGE DELIVERY
+  - Added responsive WebP variants for the hero, monogram, event, couple, and family photos while keeping the original assets
+  - Added responsive image sources and lazy loading for photos below the hero
+  - Select the groom or bride hero artwork from the URL before loading the image
+
+PAGE LOADING
+  - Deferred the main JavaScript file and combined Google Fonts into one request
+  - Removed the unused Open Sans font request
+  - Kept music and map media from preloading with the initial page
+
 [2026-10-22] - Wedding Music Player
 -----------------------------------
 
