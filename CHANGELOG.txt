@@ -1,6 +1,104 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-22] - Full Responsive Design Implementation
+-----------------------------------------------------
+
+RESPONSIVE BREAKPOINTS COVERED
+  - Smartphone (≤640px / ≤480px / ≤375px)
+  - Tablet portrait (≤768px) and landscape (≤900px / ≤1024px)
+  - Full HD laptop (base / ≤1280px)
+  - 2K monitor (≥1440px / ≥1921px)
+
+HERO SECTION
+  - Replaced single <img> background with a <picture> element serving three responsive crops:
+    mobile (≤640px), tablet (≤1024px), and desktop — for both groom and bride sides
+  - Updated JS setHeroImage() and updateSidePresentation() to swap all three sources at once
+    when the side parameter or language changes
+  - Changed hero section height from min-height: section-min-height to 100vh / 100dvh on all screen sizes
+  - Switched #hero-section from overflow: hidden to overflow-x: hidden so hero content can
+    scroll on very short phones when content overflows
+  - Made hero-names-couple padding fluid with clamp() instead of hardcoded 40px/20px
+  - Medallion (CK logo): 152px desktop → 96px tablet → 80px mobile using CSS custom property
+
+NAVIGATION — MOBILE FULL-SCREEN DRAWER
+  - Replaced the top-dropdown drawer with a full-screen slide-in panel (translateX animation)
+  - Drawer covers the entire screen, uses site purple-dark + temple pattern background
+  - Added wedding logo medallion and "Chinmay & Khushi" couple name as a drawer header
+  - Couple name in drawer updates for language (English/Hindi) and side parameter (?side=khushi)
+  - Added a ✕ close button inside the drawer; hamburger fades out while drawer is open
+  - Body scroll locked when drawer is open, restored on close
+  - Nav links display large (1.45rem), spaced with gold hover colour and left-slide effect
+  - Language switcher styled as full-width pill matching the drawer theme
+  - Removed duplicate hamburger X animation CSS block
+
+HERO COUNTDOWN BAR
+  - On mobile (≤640px) the bar stacks vertically and is fully centered (label + timer)
+  - Fixed hcb-stage2-timer alignment at mobile to center rather than stretch/flex-start
+  - Timer numbers center-justified on all mobile breakpoints
+
+MEET THE COUPLE SECTION
+  - Profile grid now stacks to single column at ≤900px (was ≤768px)
+  - Profile photo height made fluid: clamp(260px, 30vw, 400px) — replaces hardcoded 400px
+  - Phone heights: 320px (≤900px) → 260px (≤640px) → 240px (≤375px)
+  - Decorative circles scaled at every breakpoint to avoid overflowing the photo box
+  - profile-photo-caption h3 font changed to clamp(1.35rem, 2.5vw, 1.75rem)
+  - couple-intro font scales down at ≤640px and ≤480px
+  - profile-details dd and couple-grid responsive rules added at ≤480px
+
+EVENTS / TIMELINE SECTION
+  - timeline-subtitle changed from hardcoded 18px to clamp(0.9rem, 2vw, 1.15rem)
+  - image-container height replaced with aspect-ratio: 3/2 — fully fluid, removed all
+    hardcoded height overrides at 1440px, 1921px, and 1024px
+  - day-number and day-name changed from 1.3rem hardcoded to clamp(0.95rem, 1.8vw, 1.3rem)
+  - At ≤900px: event cards switch to a 2-per-row fluid CSS grid
+  - At ≤768px: cards stack to single column, max-width 480px centered
+  - At ≤640px: tab bar stacks vertically (moved from ≤480px) — full width, easy to tap
+  - Day label scales down: 1rem (≤900px) → 0.95rem (≤768px) → 0.85rem (≤640px)
+  - Removed duplicate dead timeline-tabs gap rule from ≤640px block
+
+OUR FAMILIES SECTION
+  - All hardcoded px font sizes converted to rem:
+    fam-lineage-name/spouse: 16px → 1rem
+    fam-lineage-origin: 16px → 0.9rem
+    fam-sibling-name: 20px → 1.2rem
+    fam-sibling-detail: 16px → 0.9rem
+    fam-sibling-detail strong: 17px → 0.95rem
+    fam-card-name clamp max: 34px → 2rem
+  - fam-detail-row dd line-height changed from hardcoded 29px to unitless 1.6
+  - fam-detail-row dt width: 95px now overridden to auto on ≤640px (single-column layout)
+  - fam-card min-height: 320px removed on ≤640px (content drives height)
+  - fam-card-name scales with clamp on mobile, centered
+  - Sibling cards: photo centers itself when card stacks at ≤480px
+
+VENUE SECTION
+  - Removed inline width="600" height="450" attributes from Google Maps iframe —
+    CSS now fully controls dimensions across all breakpoints
+  - Added title attribute to iframe for accessibility
+  - Fixed venue-btn-outline colour: was color: ivory (invisible on light background) →
+    changed to color: purple-dark
+  - venue-map iframe given height: 100% alongside min-height so desktop layout fills correctly
+  - Map heights increased across mobile: 360px (≤900px), 320px (≤640px), 280px (≤480px)
+  - venue-btn touch target padding increased at ≤480px
+  - Section padding tightened at ≤480px so card uses full viewport width
+
+FOOTER
+  - footer-line font-size made fluid: clamp(0.52rem, 1.4vw, 0.68rem)
+  - letter-spacing made fluid: clamp(0.08em, 0.5vw, 0.22em)
+  - Added overflow-wrap: break-word as safety net against horizontal overflow
+  - Explicit overrides at ≤480px and ≤375px to prevent text overflow
+
+MUSIC WIDGET
+  - Button slightly smaller on mobile: clamp(3.5rem, 12vw, 4.25rem)
+  - Tooltip hidden on ≤640px — would escape left viewport edge on narrow phones;
+    screen readers still receive status via aria-live region
+
+BUG FIXES
+  - body > section min-height rule now excludes #hero-section via :not() — was fragile
+    (relied on ID specificity to override; now explicit)
+  - hero-content overflow-y: auto at ≤640px was defeated by hero-section overflow: hidden —
+    fixed by changing hero-section to overflow-x: hidden only
+
 [2026-10-26] - Wedding Media & Schedule Refresh
 ------------------------------------------------
 

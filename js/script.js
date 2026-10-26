@@ -37,13 +37,19 @@ let refreshMusicPlayerLanguage = null;
 const isKhushiSide = new URLSearchParams(window.location.search).get('side') === 'khushi';
 
 function setHeroImage() {
-  const image = document.getElementById('hero-background-image');
-  if (!image) return;
+  // Set all three responsive sources (mobile, tablet, desktop) at once
+  const folder = './assets/Personal Photos/Invitation/';
+  const groom  = { mobile: 'Groom side-mobile.png', tablet: 'Groom side-tablet.png', desktop: 'Groom side.jpg' };
+  const bride  = { mobile: 'bride side-mobile.png',  tablet: 'bride side-tablet.png',  desktop: 'bride side.jpg' };
+  const files  = isKhushiSide ? bride : groom;
 
-  const imagePath = isKhushiSide
-    ? './assets/Personal Photos/Invitation/bride side.jpg'
-    : './assets/Personal Photos/Invitation/Groom side.jpg';
-  image.src = imagePath;
+  const srcMobile  = document.getElementById('hero-src-mobile');
+  const srcTablet  = document.getElementById('hero-src-tablet');
+  const imgDesktop = document.getElementById('hero-background-image');
+
+  if (srcMobile)  srcMobile.setAttribute('srcset', folder + files.mobile);
+  if (srcTablet)  srcTablet.setAttribute('srcset', folder + files.tablet);
+  if (imgDesktop) imgDesktop.setAttribute('src',   folder + files.desktop);
 }
 
 // The HTML leaves the hero image URL unset so only the requested side is fetched.
@@ -54,6 +60,13 @@ function updateSidePresentation(translations) {
   const namesKey = isKhushiSide ? 'hero.namesCoupleKhushi' : 'hero.namesCouple';
   const names = getNestedValue(translations, namesKey);
   if (coupleNames && typeof names === 'string') coupleNames.textContent = names;
+
+  // Also update the mobile nav drawer couple name (same key, same side logic)
+  const drawerCouple = document.getElementById('nav-drawer-couple');
+  if (drawerCouple && typeof names === 'string') drawerCouple.textContent = names;
+
+  // Re-apply responsive image sources in case language change triggers a re-render
+  setHeroImage();
 }
 
 
@@ -87,25 +100,46 @@ function initStickyNav() {
 
   // Hamburger toggle (mobile)
   if (navToggle && navRight) {
+
+    /** Shared helper — closes the drawer and returns focus to the hamburger */
+    function closeDrawer() {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navRight.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /** Shared helper — opens the drawer and locks body scroll */
+    function openDrawer() {
+      navToggle.setAttribute('aria-expanded', 'true');
+      navRight.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
     navToggle.addEventListener('click', () => {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!isOpen));
-      navRight.classList.toggle('open', !isOpen);
+      isOpen ? closeDrawer() : openDrawer();
     });
+
+    // Close button inside the drawer
+    const navClose = $('#nav-close');
+    if (navClose) {
+      navClose.addEventListener('click', () => {
+        closeDrawer();
+        navToggle.focus();
+      });
+    }
 
     // Close menu when a nav link is clicked
     $$('.nav-link', navRight).forEach(link => {
       link.addEventListener('click', () => {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navRight.classList.remove('open');
+        closeDrawer();
       });
     });
 
     // Close menu on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navRight.classList.contains('open')) {
-        navToggle.setAttribute('aria-expanded', 'false');
-        navRight.classList.remove('open');
+        closeDrawer();
         navToggle.focus();
       }
     });
