@@ -40,13 +40,10 @@ function setHeroImage() {
   const image = document.getElementById('hero-background-image');
   if (!image) return;
 
-  const prefix = window.weddingHeroPrefix || (isKhushiSide ? 'hero-bride' : 'hero-groom');
-  const candidates = [640, 1280, 1980]
-    .map((width) => `./assets/optimized/${prefix}-${width}.webp ${width}w`)
-    .join(', ');
-  image.sizes = '100vw';
-  image.srcset = candidates;
-  image.src = `./assets/optimized/${prefix}-1980.webp`;
+  const imagePath = isKhushiSide
+    ? './assets/Personal Photos/Invitation/bride side.jpg'
+    : './assets/Personal Photos/Invitation/Groom side.jpg';
+  image.src = imagePath;
 }
 
 // The HTML leaves the hero image URL unset so only the requested side is fetched.
@@ -308,7 +305,7 @@ function initCountdown() {
 function initMusicPlayer() {
   // Keep this path relative so the player works from the project root.
   const MUSIC_AUDIO_SOURCE = './assets/audio/Kudmayi.mp3';
-  const MUSIC_VOLUME = 0.5; // Set between 0 (silent) and 1 (full volume).
+  const MUSIC_VOLUME = 0.2; // Set between 0 (silent) and 1 (full volume).
   const audio = $('#wedding-audio');
   const button = $('#music-toggle');
   const tooltip = $('#music-tooltip');

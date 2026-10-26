@@ -1,17 +1,22 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-26] - Wedding Media & Schedule Refresh
+------------------------------------------------
+
+MEDIA & ASSETS
+  - Switched the hero invitation artwork, event photos, couple portraits, and family photos to the current source assets
+  - Updated event image references for the renamed WebP files and restored the original wedding monogram image
+  - Reduced wedding music playback volume
+
+EVENT SCHEDULE
+  - Updated ceremony times for Tikka Faal Daan, Ring Ceremony, Haldi, Baarat, Varmala, and Hast Melap
+
 [2026-10-22] - Static Asset Performance
 ---------------------------------------
 
-IMAGE DELIVERY
-  - Added responsive WebP variants for the hero, monogram, event, couple, and family photos while keeping the original assets
-  - Added responsive image sources and lazy loading for photos below the hero
-  - Select the groom or bride hero artwork from the URL before loading the image
-
 PAGE LOADING
   - Deferred the main JavaScript file and combined Google Fonts into one request
-  - Preload the selected responsive hero image before stylesheets finish loading
   - Removed the unused Open Sans font request
   - Kept music and map media from preloading with the initial page
 

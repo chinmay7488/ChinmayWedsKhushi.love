@@ -6,23 +6,6 @@
   <meta name="description" content="Wedding celebration of Chinmay & Khushi — Join us for our special day." />
   <title>Chinmay &amp; Khushi | Wedding</title>
 
-  <script>
-    (() => {
-      const side = new URLSearchParams(location.search).get('side') === 'khushi' ? 'hero-bride' : 'hero-groom';
-      const base = `./assets/optimized/${side}`;
-      const candidates = [640, 1280, 1980].map((width) => `${base}-${width}.webp ${width}w`).join(', ');
-      const preload = document.createElement('link');
-      preload.rel = 'preload';
-      preload.as = 'image';
-      preload.href = `${base}-1980.webp`;
-      preload.setAttribute('imagesrcset', candidates);
-      preload.setAttribute('imagesizes', '100vw');
-      preload.setAttribute('fetchpriority', 'high');
-      document.head.appendChild(preload);
-      window.weddingHeroPrefix = side;
-    })();
-  </script>
-
  <!-- Import Gotu and Ranga from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,7 +120,7 @@
         <div class="card-container">
         <div class="card-frame">
           <!-- Replace 'your-image-path.png' with your actual image file -->
-          <img src="assets/optimized/logo-782.webp" srcset="assets/optimized/logo-400.webp 400w, assets/optimized/logo-782.webp 782w" sizes="140px" width="782" height="624" alt="Chinmay & Khushi Monogram" class="card-image" />
+          <img src="assets/images/Wedding%20logo_without_name.png" alt="Chinmay & Khushi Monogram" class="card-image" />
         </div>
       </div>
 
@@ -275,7 +258,7 @@
         <div class="couple-grid">
           <article class="couple-profile groom-profile">
             <div class="profile-photo profile-photo-groom">
-              <img class="profile-portrait" src="assets/optimized/chinmay-720.webp" srcset="assets/optimized/chinmay-360.webp 360w, assets/optimized/chinmay-720.webp 720w" sizes="(max-width: 600px) 42vw, 240px" width="720" height="911" loading="lazy" alt="Chinmay Jain">
+              <img class="profile-portrait" src="assets/Personal%20Photos/chinmay.jpg" loading="lazy" alt="Chinmay Jain">
               <span class="profile-badge" data-i18n="couple.groomBadge">✦ The Groom</span>
               <div class="profile-photo-caption">
                 <span data-i18n="couple.groomCaption">With warmth &amp; devotion</span>
@@ -304,7 +287,7 @@
 
           <article class="couple-profile bride-profile">
             <div class="profile-photo profile-photo-bride">
-              <img class="profile-portrait" src="assets/optimized/khushi-720.webp" srcset="assets/optimized/khushi-360.webp 360w, assets/optimized/khushi-720.webp 720w" sizes="(max-width: 600px) 42vw, 240px" width="720" height="1280" loading="lazy" alt="Khushi Jain">
+              <img class="profile-portrait" src="assets/Personal%20Photos/Khushi.jpeg" loading="lazy" alt="Khushi Jain">
               <span class="profile-badge" data-i18n="couple.brideBadge">✦ The Bride</span>
               <div class="profile-photo-caption">
                 <span data-i18n="couple.brideCaption">With grace &amp; joy</span>
@@ -407,14 +390,14 @@
         <!-- Card: Tikka Faal Daan -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/faal-daan-960.webp" srcset="assets/optimized/faal-daan-480.webp 480w, assets/optimized/faal-daan-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="701" loading="lazy" alt="Tikka faal daan" class="event-image">
+            <img src="assets/images/Faal Daan.webp" loading="lazy" alt="Tikka faal daan" class="event-image">
             <span class="event-cat-badge" data-i18n="events.tikkaBadge">Tikka Faal Daan</span>
           </div>
           <div class="card-content">
             <h3 class="event-title" data-i18n="events.tikkaTitle">The Blessing &amp; Shagun Soirée</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
-              <span>11:00 AM</span>
+              <span>10:00 AM</span>
             </div>
             <p class="event-subtitle" data-i18n="events.tikkaDesc">Intricate henna designs, traditional welcome blessings, and shagun exchange for the bride and family.</p>
           </div>
@@ -423,14 +406,14 @@
         <!-- Card: Ring Ceremony -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/ring-960.webp" srcset="assets/optimized/ring-480.webp 480w, assets/optimized/ring-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="960" loading="lazy" alt="Ring Ceremony" class="event-image">
+            <img src="assets/images/ring%20arrangement.webp" loading="lazy" alt="Ring Ceremony" class="event-image">
             <span class="event-cat-badge" data-i18n="events.ringBadge">Ring Ceremony</span>
           </div>
           <div class="card-content">
             <h3 class="event-title" data-i18n="events.ringTitle">The Infinity Exchange</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
-              <span>11:00 AM</span>
+              <span>11:30 AM</span>
             </div>
             <p class="event-subtitle" data-i18n="events.ringDesc">A joyous exchange of rings binding two hearts with the blessings of both families.</p>
           </div>
@@ -439,14 +422,14 @@
         <!-- Card: Haldi -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/haldi-960.webp" srcset="assets/optimized/haldi-480.webp 480w, assets/optimized/haldi-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="960" loading="lazy" alt="Haldi" class="event-image">
+            <img src="assets/images/haldii.webp" loading="lazy" alt="Haldi" class="event-image">
             <span class="event-cat-badge" data-i18n="events.haldiBadge">Haldi</span>
           </div>
           <div class="card-content">
             <h3 class="event-title" data-i18n="events.haldiTitle">The Yellow Glow Affair</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
-              <span>11:00 AM</span>
+              <span>02:00 PM</span>
             </div>
             <p class="event-subtitle" data-i18n="events.haldiDesc">The bride and groom are anointed with turmeric paste for radiance and blessings.</p>
           </div>
@@ -455,7 +438,7 @@
         <!-- Card: Sangeet -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/sangeet-960.webp" srcset="assets/optimized/sangeet-480.webp 480w, assets/optimized/sangeet-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="960" loading="lazy" alt="Sangeet night" class="event-image">
+            <img src="assets/images/sangeet.webp" loading="lazy" alt="Sangeet night" class="event-image">
             <span class="event-cat-badge" data-i18n="events.sangeetBadge">Sangeet</span>
           </div>
           <div class="card-content">
@@ -490,14 +473,14 @@
         <!-- Card: Baarat -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/baraat-960.webp" srcset="assets/optimized/baraat-480.webp 480w, assets/optimized/baraat-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="701" loading="lazy" alt="Baarat procession" class="event-image">
+            <img src="assets/images/baraat.webp" loading="lazy" alt="Baarat procession" class="event-image">
             <span class="event-cat-badge" data-i18n="events.baraatBadge">Baraat</span>
           </div>
           <div class="card-content">
             <h3 class="event-title" data-i18n="events.baraatTitle">The Grand Entry</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
-              <span>4:30 PM</span>
+              <span>10:00 AM</span>
             </div>
             <p class="event-subtitle" data-i18n="events.baraatDesc">The groom arrives with his family and friends in a joyful procession.</p>
           </div>
@@ -506,14 +489,14 @@
         <!-- Card: Varmala & Reception -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/varmala-960.webp" srcset="assets/optimized/varmala-480.webp 480w, assets/optimized/varmala-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="701" loading="lazy" alt="Varmala & Reception" class="event-image">
+            <img src="assets/images/varmala.webp" loading="lazy" alt="Varmala & Reception" class="event-image">
             <span class="event-cat-badge" data-i18n="events.varmalaBadge">Varmala</span>
           </div>
           <div class="card-content">
             <h3 class="event-title" data-i18n="events.varmalaTitle">The Floral Exchange</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
-              <span>6:15 PM</span>
+              <span>12:00 PM</span>
             </div>
             <p class="event-subtitle" data-i18n="events.varmalaDesc">The bride and groom exchange flower garlands, marking the acceptance of the union.</p>
           </div>
@@ -522,14 +505,14 @@
         <!-- Card: Hast Melap -->
         <div class="event-card">
           <div class="image-container">
-            <img src="assets/optimized/saathphere-960.webp" srcset="assets/optimized/saathphere-480.webp 480w, assets/optimized/saathphere-960.webp 960w" sizes="(max-width: 480px) calc(100vw - 32px), 360px" width="960" height="701" loading="lazy" alt="Hast Melap ceremony" class="event-image">
+            <img src="assets/images/saathphere.webp" loading="lazy" alt="Hast Melap ceremony" class="event-image">
             <span class="event-cat-badge" data-i18n="events.hastMelapBadge">Hast Melap</span>
           </div>
           <div class="card-content">
             <h3 class="event-title" data-i18n="events.hastMelapTitle">The Sacred Hand-Tying Ritual</h3>
             <div class="event-time">
               <i class="fa-regular fa-clock icon-clock"></i>
-              <span>12:45 PM</span>
+              <span>02:00 PM</span>
             </div>
             <p class="event-subtitle" data-i18n="events.hastMelapDesc">Sacred ceremony of joining hands and taking seven vows around the holy fire.</p>
           </div>
@@ -575,7 +558,7 @@
           <div class="fam-card">
             <div class="fam-card-photo-wrap">
               <div class="fam-photo-placeholder" aria-label="Photo of Groom's parents">
-               <img src="assets/optimized/groom-parents-480.webp" srcset="assets/optimized/groom-parents-240.webp 240w, assets/optimized/groom-parents-480.webp 480w" sizes="198px" width="480" height="854" loading="lazy" alt="Groom's parents">
+               <img src="assets/Personal%20Photos/mummy_papa.jpeg" loading="lazy" alt="Groom's parents">
               </div>
               <span class="fam-photo-badge" data-i18n="families.parentsBadge">Parents</span>
             </div>
@@ -631,7 +614,7 @@
           <div class="fam-card">
             <div class="fam-card-photo-wrap">
               <div class="fam-photo-placeholder" aria-label="Photo of Bride's parents">
-               <img src="assets/optimized/bride-parents-480.webp" srcset="assets/optimized/bride-parents-240.webp 240w, assets/optimized/bride-parents-480.webp 480w" sizes="198px" width="480" height="720" loading="lazy" alt="Bride's parents">
+               <img src="assets/Personal%20Photos/mummyji_papaji.jpeg" loading="lazy" alt="Bride's parents">
               </div>
               <span class="fam-photo-badge" data-i18n="families.parentsBadge">Parents</span>
             </div>
@@ -675,7 +658,7 @@
           <div class="fam-section-label" data-i18n="families.sisterTitle">Sister</div>
           <div class="fam-sibling-card">
             <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Aastha Jain">
-               <img src="assets/optimized/aastha-480.webp" srcset="assets/optimized/aastha-240.webp 240w, assets/optimized/aastha-480.webp 480w" sizes="90px" width="480" height="854" loading="lazy" alt="Aastha Jain">
+               <img src="assets/Personal%20Photos/aastha.jpeg" loading="lazy" alt="Aastha Jain">
               </div>
             <div class="fam-sibling-body">
               <div class="fam-sibling-name-row">
@@ -690,7 +673,7 @@
 
           <div class="fam-sibling-card">
             <div class="fam-photo-placeholder fam-photo-sm" aria-label="Photo of Mrs. Paari Jain">
-               <img src="assets/optimized/paari-480.webp" srcset="assets/optimized/paari-240.webp 240w, assets/optimized/paari-480.webp 480w" sizes="90px" width="480" height="720" loading="lazy" alt="Paari Jain">
+               <img src="assets/Personal%20Photos/paari.jpeg" loading="lazy" alt="Paari Jain">
               </div>
             <div class="fam-sibling-body">
               <div class="fam-sibling-name-row">
