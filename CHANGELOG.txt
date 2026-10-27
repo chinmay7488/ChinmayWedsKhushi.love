@@ -1,6 +1,12 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-10-27] - Mobile Countdown Bar Fit Fix
+--------------------------------------------
+
+COUNTDOWN BAR
+  - Adjusted the countdown bar so all four time units remain visible on narrow phones
+
 [2026-10-22] - Full Responsive Design Implementation
 -----------------------------------------------------
 
