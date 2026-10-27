@@ -3420,24 +3420,30 @@ body > section:not(#hero-section) {
   }
 
   .hcb-timer {
-    gap: 0.4rem;
+    gap: 0;
     width: 100%;
     justify-content: center;
   }
 
   .hcb-time-values {
-    gap: 0.4rem;
+    gap: 0;
     width: 100%;
-    justify-content: center;
+    justify-content: space-around;
+  }
+
+  /* Each unit takes equal share of the row — nothing gets cut off */
+  .hcb-unit {
+    flex: 1;
+    align-items: center;
   }
 
   .hcb-num {
-    font-size: clamp(1.4rem, 6vw, 2rem);
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
   }
 
   .hcb-lbl {
-    font-size: 0.48rem;
-    letter-spacing: 0.1em;
+    font-size: 0.44rem;
+    letter-spacing: 0.08em;
   }
 
   .hcb-sep {
@@ -3721,8 +3727,18 @@ body > section:not(#hero-section) {
   }
 
   .hcb-unit {
-    flex: 0 0 calc(50% - 0.5rem);   /* 2×2 grid of timer units */
+    flex: 1;                /* keep all 4 in one row, equal width */
     align-items: center;
+  }
+
+  /* Smaller numbers on tiny phones so all 4 units fit */
+  .hcb-num {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  .hcb-lbl {
+    font-size: 0.4rem;
+    letter-spacing: 0.06em;
   }
 
   .event-card {
