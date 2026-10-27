@@ -1032,6 +1032,11 @@ body > section:not(#hero-section) {
     width: clamp(3.5rem, 12vw, 4.25rem);
   }
 
+  /* Raise the button above the countdown bar so it doesn't overlap the timer */
+  .music-widget {
+    bottom: max(7rem, calc(env(safe-area-inset-bottom) + 7rem));
+  }
+
   /* Hide tooltip on mobile — too narrow, escapes viewport; status is read by screen readers */
   .music-tooltip {
     display: none !important;
@@ -3393,8 +3398,19 @@ body > section:not(#hero-section) {
   .hero-countdown-bar-inner {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 1.2rem 1.25rem;
+    gap: 0.75rem;
+    padding: 0.9rem 0.75rem;
+  }
+
+  /* Reduce bar label text to save vertical space */
+  .hcb-title {
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+  }
+
+  .hcb-subtitle {
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
   }
 
   .hcb-left {
@@ -3404,13 +3420,24 @@ body > section:not(#hero-section) {
   }
 
   .hcb-timer {
-    gap: 0.75rem;
+    gap: 0.4rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hcb-time-values {
+    gap: 0.4rem;
     width: 100%;
     justify-content: center;
   }
 
   .hcb-num {
-    font-size: clamp(1.6rem, 7vw, 2.5rem);
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .hcb-lbl {
+    font-size: 0.48rem;
+    letter-spacing: 0.1em;
   }
 
   .hcb-sep {
