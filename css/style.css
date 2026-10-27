@@ -500,21 +500,19 @@ body > section:not(#hero-section) {
 ----------------------------------------------- */
 #hero-section {
   position: relative;
-  /* Full viewport height on all screen sizes */
+  /* At least full viewport height — grows if content needs more space on small phones */
   min-height: 100vh;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;   /* prevent horizontal bleed; allow vertical scroll on small phones */
+  overflow-x: hidden;
   background-color: #1e0b08;
 }
 
-/* Use dynamic viewport height on browsers that support it (avoids mobile browser chrome issues) */
+/* Use dynamic viewport height on browsers that support it */
 @supports (height: 100dvh) {
   #hero-section {
     min-height: 100dvh;
-    height: 100dvh;
   }
 }
 
@@ -3312,11 +3310,38 @@ body > section:not(#hero-section) {
     --medallion-size: 80px;
   }
 
-  /* Hero content — ensure it scrolls if it overflows on very small phones */
+  /* Hero content — tighter padding on mobile */
   .hero-content {
     justify-content: flex-start;
-    padding-top: calc(var(--nav-height) + 1.5rem);
+    padding-top: calc(var(--nav-height) + 1rem);
+    padding-bottom: 1.25rem;
     overflow-y: auto;
+    gap: 0;
+  }
+
+  /* Tighten vertical spacing between hero elements */
+  .hero-blessing {
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-names {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-names-couple {
+    padding: 6px 0 4px 0;   /* drastically reduce script font vertical padding on mobile */
+  }
+
+  .hero-hashtag {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-meta {
+    margin-bottom: 1rem;
   }
 
   /* Hero */
@@ -3533,8 +3558,8 @@ body > section:not(#hero-section) {
 
   /* Hero */
   .hero-content {
-    padding-top: calc(var(--nav-height) + 1.5rem);
-    padding-bottom: 2rem;
+    padding-top: calc(var(--nav-height) + 0.75rem);
+    padding-bottom: 1rem;
   }
 
   .hero-names {
