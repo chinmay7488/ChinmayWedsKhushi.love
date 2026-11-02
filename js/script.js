@@ -38,18 +38,19 @@ const isKhushiSide = new URLSearchParams(window.location.search).get('side') ===
 
 function setHeroImage() {
   // Set all three responsive sources (mobile, tablet, desktop) at once
+  // srcset parses spaces as candidate separators, so encode the complete URL path.
   const folder = './assets/Personal Photos/Invitation/';
-  const groom  = { mobile: 'Groom side-mobile.png', tablet: 'Groom side-tablet.png', desktop: 'Groom side.jpg' };
-  const bride  = { mobile: 'bride side-mobile.png',  tablet: 'bride side-tablet.png',  desktop: 'bride side.jpg' };
+  const groom  = { mobile: 'Groom side-mobile.webp', tablet: 'Groom side-tablet.webp', desktop: 'Groom side.webp' };
+  const bride  = { mobile: 'bride side-mobile.webp',  tablet: 'bride side-tablet.webp',  desktop: 'bride side.webp' };
   const files  = isKhushiSide ? bride : groom;
 
   const srcMobile  = document.getElementById('hero-src-mobile');
   const srcTablet  = document.getElementById('hero-src-tablet');
   const imgDesktop = document.getElementById('hero-background-image');
 
-  if (srcMobile)  srcMobile.setAttribute('srcset', folder + files.mobile);
-  if (srcTablet)  srcTablet.setAttribute('srcset', folder + files.tablet);
-  if (imgDesktop) imgDesktop.setAttribute('src',   folder + files.desktop);
+  if (srcMobile)  srcMobile.setAttribute('srcset', encodeURI(folder + files.mobile));
+  if (srcTablet)  srcTablet.setAttribute('srcset', encodeURI(folder + files.tablet));
+  if (imgDesktop) imgDesktop.setAttribute('src',   encodeURI(folder + files.desktop));
 }
 
 // The HTML leaves the hero image URL unset so only the requested side is fetched.

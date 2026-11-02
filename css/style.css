@@ -524,6 +524,7 @@ body > section:not(#hero-section) {
   height: 100%;
   z-index: 0;
   display: block;
+  background-color: #1e0b08;
 }
 
 /* ── Background image inside <picture> ── */
@@ -532,8 +533,8 @@ body > section:not(#hero-section) {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;  /* keep subjects in frame on portrait screens */
+  object-fit: contain; /* show the complete responsive artwork without cropping */
+  object-position: center;
   z-index: 0;
   opacity: 0.7;
 }
@@ -2816,9 +2817,9 @@ body > section:not(#hero-section) {
 ============================================== */
 @media (max-width: 1024px) {
 
-  /* Hero — use tablet portrait image, keep subjects in frame */
+  /* Keep the full tablet artwork centered when it does not fill the viewport. */
   .hero-background-image {
-    object-position: center top;
+    object-position: center;
   }
 
   /* Couple — scale decorative circles at 1024px (cards ~480px wide in 2-col) */

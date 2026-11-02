@@ -1,6 +1,14 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-11-02] - Responsive Hero WebP Image Update
+-------------------------------------------------
+
+HERO IMAGES
+  - Replaced groom and bride mobile, tablet, and desktop hero backgrounds with WebP assets
+  - Fixed responsive image URLs by encoding spaces in srcset paths so browsers select the correct device variant
+  - Changed hero image fitting to contain so the full artwork remains visible without cropping
+
 [2026-10-27] - Mobile Countdown Bar Fit Fix
 --------------------------------------------
 
