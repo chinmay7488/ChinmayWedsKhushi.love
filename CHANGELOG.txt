@@ -1,6 +1,12 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-11-13] - Temporarily Disable Meet the Couple Section
+----------------------------------------------------------
+
+MEET THE COUPLE
+  - Commented out the bride and groom introduction section in the page markup
+
 [2026-11-02] - Responsive Hero WebP Image Update
 -------------------------------------------------
 
