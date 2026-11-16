@@ -1,6 +1,12 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-11-16] - Correct Bride's Sisters' Names
+---------------------------------------------
+
+OUR FAMILIES
+  - Corrected the bride's sisters' names in the English and Hindi translations
+
 [2026-11-16] - Correct Bride's Maternal Grandfather Name
 --------------------------------------------------------
 
