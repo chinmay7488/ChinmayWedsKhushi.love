@@ -506,7 +506,7 @@ body > section:not(#hero-section) {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-  background-color: #1e0b08;
+  background-color: #4a2418;
 }
 
 /* Use dynamic viewport height on browsers that support it */
@@ -524,7 +524,7 @@ body > section:not(#hero-section) {
   height: 100%;
   z-index: 0;
   display: block;
-  background-color: #1e0b08;
+  background-color: var(--color-purple-lightest);
 }
 
 /* ── Background image inside <picture> ── */
@@ -679,7 +679,7 @@ body > section:not(#hero-section) {
 .hero-names-couple {
   display: block;
   font-family: var(--font-Main);
-  color: var(--color-purple-dark);
+  color: var(--color-ivory);
   font-size: 1.05em;
   padding: clamp(12px, 3vw, 40px) 0 clamp(8px, 2vw, 20px) 0;
 }

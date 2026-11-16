@@ -1,6 +1,16 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-11-16] - Refine Hero Styling and Hindi Copy
+-------------------------------------------------
+
+HERO SECTION
+  - Changed the image matte to light purple and the fallback background to warm brown
+  - Updated the couple's name color to ivory for improved contrast
+
+HINDI TRANSLATIONS
+  - Added spacing before exclamation marks in two family notes
+
 [2026-11-16] - Correct Groom's Grandmother Name
 ------------------------------------------------
 
