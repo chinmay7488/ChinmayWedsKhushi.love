@@ -1,6 +1,13 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-11-16] - Update Bride's Family Details
+--------------------------------------------
+
+OUR FAMILIES
+  - Changed the bride's paternal origin label to hometown in the English and Hindi translations
+  - Updated her sisters' honorifics to Miss in both translations
+
 [2026-11-16] - Correct Bride's Sisters' Names
 ---------------------------------------------
 
