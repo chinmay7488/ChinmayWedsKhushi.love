@@ -1,6 +1,12 @@
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 
+[2026-11-16] - Correct Bride's Maternal Grandfather Name
+--------------------------------------------------------
+
+OUR FAMILIES
+  - Corrected the bride's maternal grandfather's name in the English and Hindi translations
+
 [2026-11-16] - Refine Hero Styling and Hindi Copy
 -------------------------------------------------
 
