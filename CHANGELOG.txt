@@ -1,3 +1,9 @@
+[2026-11-24] - Set Hastamelap Countdown to 2:00 PM
+--------------------------------------------------
+
+COUNTDOWN TIMER
+  - Set the 5 December 2026 countdown target to 2:00 PM IST, matching the Hastamelap muhurat
+
 CHANGELOG — Chinmay and Khushi Wedding Website
 ========================================
 

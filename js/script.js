@@ -214,7 +214,7 @@ function initScrollAnimations() {
 // Staged wedding countdown. URL test values: ?countdownTest=stage1, stage2,
 // stage3, stage4start, stage4complete, or stage5. Remove the query to use real time.
 function initCountdown() {
-  const originalCountdownTarget = new Date('2026-12-05T09:30:00+05:30');
+  const originalCountdownTarget = new Date('2026-12-05T14:00:00+05:30');
   const start = new Date('2026-12-05T14:00:00+05:30');
   const celebration = new Date('2026-12-04T00:00:00+05:30');
   const dayTwo = new Date('2026-12-05T00:00:00+05:30');
